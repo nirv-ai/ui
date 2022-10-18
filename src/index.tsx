@@ -1,14 +1,7 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-
-import { Container, CssBaseline } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
-import { App } from "./Components";
+import { Router } from "./Components/Router";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -17,10 +10,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <CssBaseline />
-    <Container disableGutters>
-      <App />
-    </Container>
+    <Router />
   </React.StrictMode>
 );
 
