@@ -18,10 +18,6 @@ const styleOverrides = `
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    p {
-      margin: 0;
-    }
-
     code {
       font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;

@@ -1,11 +1,12 @@
 import React from "react";
 import { Box } from "@mui/material";
 
+import { Grid } from "Library";
+
 export const PlayersAbout = () => (
-  <Box sx={{ backgroundColor: "#303197", color: "white" }}>
-    <p>
-      Players are the core to NIRV.ai, creating and sharing their paths in life
-    </p>
+  <Grid xs={12} component="article">
+    <h2>PLAYERS</h2>
+    <p>Players are core to NIRV.ai, creating and sharing their paths in life</p>
     <p>Total Players 500</p>
-  </Box>
+  </Grid>
 );

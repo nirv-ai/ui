@@ -1,39 +1,47 @@
+/**
+ * TODO: needs to switch on path, currently only usable for app landing
+ */
 import React from "react";
 import { Box, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+
+import { Grid } from "Library";
 
 const AppHeaderLogo = () => (
-  <Stack
-    component="section"
-    spacing={2}
-    direction="row"
-    sx={{ height: "150px", backgroundColor: "#EEEEEE" }}
-    justifyContent="center"
-    alignItems="center"
-  >
-    <Box
-      component="h1"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      fontSize="calc(64px + 2vmin)"
-    >
-      NIRV.ai
-    </Box>
-    <Box
+  <Grid xs={12} component="section">
+    <Stack
       component="section"
-      display="grid"
-      gridTemplateColumns="repeat(2, 1fr)"
-      gridRow="auto auto"
+      spacing={2}
+      direction="row"
+      sx={{ height: "150px", backgroundColor: "#EEEEEE" }}
       justifyContent="center"
       alignItems="center"
-      fontSize="calc(16px + 2vmin)"
     >
-      <div>N</div>
-      <div>I</div>
-      <div>R</div>
-      <div>V</div>
-    </Box>
-  </Stack>
+      <Box
+        component="h1"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        fontSize="calc(64px + 2vmin)"
+      >
+        NIRV.ai
+      </Box>
+      <Box
+        component="section"
+        display="grid"
+        gridTemplateColumns="repeat(2, 1fr)"
+        gridRow="auto auto"
+        justifyContent="center"
+        alignItems="center"
+        fontSize="calc(16px + 2vmin)"
+      >
+        <div>N</div>
+        <div>I</div>
+        <div>R</div>
+        <div>V</div>
+      </Box>
+    </Stack>
+  </Grid>
 );
 
 const AppHeaderActions = () => (
@@ -43,25 +51,19 @@ const AppHeaderActions = () => (
     justifyContent="center"
     alignItems="center"
     sx={{
-      textTransform: "capitalize",
       backgroundColor: "white",
       height: "100px",
     }}
   >
-    <span>JOIN</span>
+    <Link to="join/player">JOIN</Link>
     <span>LOGIN</span>
-    <span>LEARN</span>
+    <Link to="/learn">LEARN</Link>
   </Stack>
 );
 
 export const AppHeader = () => (
-  <Box
-    component="header"
-    className="app-header"
-    flexDirection="column"
-    display="flex"
-  >
+  <Grid xs={12} component="header" flexDirection="column" display="flex">
     <AppHeaderLogo />
     <AppHeaderActions />
-  </Box>
+  </Grid>
 );

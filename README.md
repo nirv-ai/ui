@@ -38,10 +38,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## core components
 
 - [create react app](https://create-react-app.dev/)
-- [mui bundle size](https://mui.com/material-ui/guides/minimizing-bundle-size/)
-- [mui theme](https://mui.com/material-ui/customization/theming/)
 - [mui](https://mui.com/material-ui/)
-- [mui & react router](https://mui.com/material-ui/guides/routing/)
 - [react router](https://reactrouter.com/en/main)
+  - continue: https://reactrouter.com/en/main/start/tutorial#data-writes--html-forms
 - [typescript](https://www.typescriptlang.org/)
 - [yarn](https://yarnpkg.com)
