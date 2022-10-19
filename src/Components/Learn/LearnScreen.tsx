@@ -9,9 +9,9 @@ import {
 } from "Components";
 export const LearnScreen = () => (
   <Grid xs={12} component="main">
-    <PlayersAbout />
     <PathsAbout />
     <ActionsAbout />
     <SkillsAbout />
+    <PlayersAbout />
   </Grid>
 );

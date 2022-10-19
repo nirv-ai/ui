@@ -43,3 +43,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
   - continue: https://reactrouter.com/en/main/start/tutorial#data-writes--html-forms
 - [typescript](https://www.typescriptlang.org/)
 - [yarn](https://yarnpkg.com)
+- [store2](https://github.com/nbubna/store)

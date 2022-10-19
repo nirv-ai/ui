@@ -7,6 +7,7 @@ const sx = {
     textTransform: "uppercase",
   },
 };
+
 export const TextField: React.FC<TextFieldProps> = ({
   variant = "outlined",
   required = true,
