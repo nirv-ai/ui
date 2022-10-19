@@ -1,14 +1,10 @@
 import React from "react";
-import { Box } from "@mui/material";
+
+import { Grid } from "Library";
 
 export const SkillsAbout = () => (
-  <Box
-    sx={{
-      backgroundColor: "#333536",
-      color: "white",
-    }}
-  >
-    <p>Skills</p>
+  <Grid component="article" xs={12}>
+    <h2>SKILLS</h2>
     <p>Skills highlight a players ability</p>
-  </Box>
+  </Grid>
 );

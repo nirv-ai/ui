@@ -1,9 +1,11 @@
 import React from "react";
-import { Box } from "@mui/material";
+
+import { Grid } from "Library";
 
 export const ActionsAbout = () => (
-  <Box sx={{ backgroundColor: "#d7b428", color: "white" }}>
+  <Grid xs={12} component="article">
+    <h2>ACTIONS</h2>
     <p>Actions are things people do</p>
     <p>Total Actions 5.6k</p>
-  </Box>
+  </Grid>
 );
