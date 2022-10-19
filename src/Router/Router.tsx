@@ -7,10 +7,11 @@ import {
 import {
   AppLandingScreen,
   LearnScreen,
-  PlayerDetails,
+  PlayerDetail,
   PlayerJoinScreen,
-  validatePlayerJoinForm,
 } from "Components";
+import { playerActions } from "./Actions";
+import { playerLoaders } from "./Loaders";
 import { NotFound } from "./NotFound";
 import { Root } from "./Root";
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
           },
           {
             path: "join/player",
-            action: validatePlayerJoinForm,
+            action: playerActions.validatePlayerJoinForm,
             element: <PlayerJoinScreen />,
           },
           {
@@ -39,7 +40,8 @@ const router = createBrowserRouter([
           },
           {
             path: "player/:callsign",
-            element: <PlayerDetails />,
+            loader: playerLoaders.loadPlayer,
+            element: <PlayerDetail />,
           },
         ],
       },
