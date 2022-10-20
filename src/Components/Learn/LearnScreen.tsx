@@ -7,6 +7,7 @@ import {
   PlayersAbout,
   SkillsAbout,
 } from "Components";
+
 export const LearnScreen = () => (
   <Grid xs={12} component="main">
     <PathsAbout />

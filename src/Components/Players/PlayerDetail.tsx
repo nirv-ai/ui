@@ -7,6 +7,7 @@ export interface PlayerDataInterface {
   callsign: string;
   first: string;
   last: string;
+  password: string;
 }
 
 export interface PlayerDetailLoaderData {
@@ -20,7 +21,7 @@ export const PlayerDetail = () => {
       <img key={player.avatar} src={player.avatar} alt="player avatar" />
 
       <div>
-        <h1>
+        <h2>
           {player.first || player.last ? (
             <>
               {player.first} {player.last}
@@ -28,7 +29,7 @@ export const PlayerDetail = () => {
           ) : (
             <i>No Name</i>
           )}
-        </h1>
+        </h2>
 
         <div></div>
       </div>
