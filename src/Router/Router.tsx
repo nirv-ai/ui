@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider /*, Route */,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   AppLandingScreen,
@@ -11,6 +8,7 @@ import {
   PlayerJoinScreen,
   PlayerPlayScreen,
 } from "Components";
+import { PlayerContextProvider } from "Data";
 import { playerActions } from "./Actions";
 import { playerLoaders } from "./Loaders";
 import { NotFound } from "./NotFound";
@@ -31,23 +29,35 @@ const router = createBrowserRouter([
             element: <AppLandingScreen />,
           },
           {
-            path: "join/player",
+            path: "join/player", // signup
             action: playerActions.validatePlayerJoinForm,
-            element: <PlayerJoinScreen />,
+            element: (
+              <PlayerContextProvider>
+                <PlayerJoinScreen />
+              </PlayerContextProvider>
+            ),
           },
           {
-            path: "play/player",
-            element: <PlayerPlayScreen />,
+            path: "play/player", // login
+            element: (
+              <PlayerContextProvider>
+                <PlayerPlayScreen />
+              </PlayerContextProvider>
+            ),
             action: playerActions.validatePlayerPlayForm,
           },
           {
-            path: "learn",
+            path: "learn", // all about NIRV.ai
             element: <LearnScreen />,
           },
           {
-            path: "player/:callsign",
+            path: "player/:callsign", // a players homepage
             loader: playerLoaders.loadPlayer,
-            element: <PlayerDetail />,
+            element: (
+              <PlayerContextProvider>
+                <PlayerDetail />
+              </PlayerContextProvider>
+            ),
           },
         ],
       },

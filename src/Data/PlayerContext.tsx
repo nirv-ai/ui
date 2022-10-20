@@ -1,16 +1,19 @@
 import React from "react";
 
-import { playerDataConfig } from ".";
+import {
+  playerDataConfig,
+  type PlayerDataConfigInterface,
+} from "./PlayerDataConfig";
 
-export const PlayerContext = React.createContext(playerDataConfig.defaults);
-PlayerContext.displayName = "PlayerContext";
+export const PlayerContext = React.createContext(playerDataConfig.context);
+PlayerContext.displayName = playerDataConfig.context.contextName;
 
 export interface PlayerContextProviderInterface {
   children: React.ReactNode;
-  context?: typeof playerDataConfig.defaults;
+  context?: PlayerDataConfigInterface["context"];
 }
 export const PlayerContextProvider: React.FC<
   PlayerContextProviderInterface
-> = ({ children, context = playerDataConfig.defaults }) => (
+> = ({ children, context = playerDataConfig.context }) => (
   <PlayerContext.Provider value={context}>{children}</PlayerContext.Provider>
 );

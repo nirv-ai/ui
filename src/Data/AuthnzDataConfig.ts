@@ -1,19 +1,23 @@
 import { type DataConfigInterface } from ".";
 
 export interface AuthnzDataConfigInterface extends DataConfigInterface {
-  defaults: {
-    player: string; // callsign: user logged in as this playerInterface
+  context: Omit<DataConfigInterface["context"], "update"> & {
+    update: (key: string, next: { player: string }) => void;
+    player: string;
   };
 }
+
 // authentication & authorization data,
 export const authnzDataConfig: AuthnzDataConfigInterface = {
+  context: {
+    contextName: "AUTHNZ_CONTEXT",
+    update: (key, next) => {},
+    player: "",
+  },
   store: {
-    name: "AUTHNZ",
+    storeName: "AUTHNZ",
     keys: {
       player: "", // user logged in as this player
     },
-  },
-  defaults: {
-    player: "",
   },
 };
