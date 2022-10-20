@@ -10,7 +10,7 @@ export const loadPlayer: LoaderFunction = async ({
   player: PlayerDataInterface;
 }> => {
   const playerStore = await ClientStore({
-    namespace: playerDataConfig.store.name,
+    namespace: playerDataConfig.store.storeName,
   });
 
   const player = playerStore(params.callsign);
