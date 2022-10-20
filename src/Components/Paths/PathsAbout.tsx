@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, H2, P } from "Library";
 
 export const PathsAbout = () => (
   <Grid component="article">
-    <h2>PATHS</h2>
-    <p>Paths are specific lifestyle strategies created by Players</p>
-    <p>Total Paths 1.6k</p>
+    <H2>PATHS</H2>
+    <P>Paths are specific lifestyle strategies created by Players</P>
+    <P>Total Paths 1.6k</P>
   </Grid>
 );

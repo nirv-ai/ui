@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, H2, P } from "Library";
 
 export const ActionsAbout = () => (
   <Grid component="article">
-    <h2>ACTIONS</h2>
-    <p>Actions are things people do</p>
-    <p>Total Actions 5.6k</p>
+    <H2>ACTIONS</H2>
+    <P>Actions are things people do</P>
+    <P>Total Actions 5.6k</P>
   </Grid>
 );

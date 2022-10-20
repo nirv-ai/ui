@@ -1,12 +1,14 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, TextLight, Stack } from "Library";
 
 export const AppStats = () => (
   <Grid component="section">
-    <div>Total Players 1m</div>
-    <div>Total Paths 1.2k</div>
-    <div>Total Actions 5k</div>
-    <div>Total Skills 20k</div>
+    <Stack>
+      <TextLight width="100%">Total Players 1m</TextLight>
+      <TextLight>Total Paths 1.2k</TextLight>
+      <TextLight>Total Actions 5k</TextLight>
+      <TextLight>Total Skills 20k</TextLight>
+    </Stack>
   </Grid>
 );

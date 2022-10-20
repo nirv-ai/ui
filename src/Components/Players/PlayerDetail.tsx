@@ -31,12 +31,12 @@ export const PlayerDetail = () => {
         width: 200,
         height: 200,
       },
+      { text: callsign, type: "text" as const },
     ],
     [
-      { text: about, type: "text" as const },
-      { text: callsign, type: "text" as const },
       { text: first, type: "text" as const },
       { text: last, type: "text" as const },
+      { text: about, type: "text" as const },
     ],
   ];
 

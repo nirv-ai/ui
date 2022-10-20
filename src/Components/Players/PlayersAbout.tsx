@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, H2, P } from "Library";
 
 export const PlayersAbout = () => (
   <Grid component="article">
-    <h2>PLAYERS</h2>
-    <p>Players are core to NIRV.ai, creating and sharing their paths in life</p>
-    <p>Total Players 500</p>
+    <H2>PLAYERS</H2>
+    <P>Players are core to NIRV.ai, creating and sharing their paths in life</P>
+    <P>Total Players 500</P>
   </Grid>
 );

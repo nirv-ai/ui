@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-router-dom";
 
-import { TextField, Stack } from "Library";
+import { TextField, Stack, TextBold, Button } from "Library";
 
 export const PlayerJoinForm = () => {
   return (
@@ -20,7 +20,9 @@ export const PlayerJoinForm = () => {
           type="url"
         />
       </Stack>
-      <button type="submit">Submit</button>
+      <Button type="submit">
+        <TextBold>submit</TextBold>
+      </Button>
     </Form>
   );
 };

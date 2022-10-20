@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, H2, P, TextBold } from "Library";
 
 export const PlayerPlayAbout = () => (
   <Grid component="section">
-    <h2>Ready Player One?</h2>
-    <p>
+    <H2>Ready Player One?</H2>
+    <P>
       Its time for you to continue on your path, and conquer the simulation.
-    </p>
-    <p>sign in and get started.</p>
+    </P>
+    <TextBold>sign in and get started.</TextBold>
   </Grid>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-router-dom";
 
-import { TextField, Stack } from "Library";
+import { TextField, Stack, TextBold, Button } from "Library";
 
 export const PlayerPlayForm = () => {
   return (
@@ -10,7 +10,9 @@ export const PlayerPlayForm = () => {
         <TextField id="new-player-callsign" name="callsign" />
         <TextField id="new-player-pass" name="password" type="password" />
       </Stack>
-      <button type="submit">Submit</button>
+      <Button type="submit">
+        <TextBold>submit</TextBold>
+      </Button>
     </Form>
   );
 };
