@@ -1,3 +1,13 @@
+/**
+ * some useful links
+ * https://mui.com/material-ui/guides/typescript/#customization-of-theme
+ * https://mui.com/material-ui/customization/default-theme/
+ * https://bareynol.github.io/mui-theme-creator/
+ * https://m2.material.io/inline-tools/color/
+ */
+// TODO: https://mui.com/material-ui/guides/composition
+// TODO: https://mui.com/material-ui/customization/theming
+
 import { createTheme, type LinkProps } from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -9,12 +19,7 @@ import { LinkBehavior } from "./LinkBehavior";
 const styleOverrides = `
   body {
     text-align: center;
-    font-size: calc(24px + 2vmin);
     background-color: #dddddd;
-    color: #282c34;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -24,6 +29,7 @@ const styleOverrides = `
     }
   }
 `;
+
 export const Theme = createTheme({
   components: {
     MuiCssBaseline: { styleOverrides },

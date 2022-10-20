@@ -9,7 +9,7 @@ import { Grid, Stack, TextBold, TextLight } from "Library";
 
 export const AppHeaderLogo = () => (
   <Grid component="section">
-    <TextBold fontSize="calc(64px + 2vmin)">NIRV.ai</TextBold>
+    <TextBold fontSize="64px">NIRV.ai</TextBold>
   </Grid>
 );
 
@@ -32,16 +32,16 @@ export const AppHeaderActions = () => (
     }}
   >
     <Link to="/">
-      <TextBold>home</TextBold>
+      <TextBold fontSize="12px">home</TextBold>
     </Link>
     <Link to="join/player">
-      <TextBold>join</TextBold>
+      <TextBold fontSize="12px">join</TextBold>
     </Link>
     <Link to="play/player">
-      <TextBold>play</TextBold>
+      <TextBold fontSize="12px">play</TextBold>
     </Link>
     <Link to="learn">
-      <TextBold>learn</TextBold>
+      <TextBold fontSize="12px">learn</TextBold>
     </Link>
   </Stack>
 );
