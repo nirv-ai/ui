@@ -9,7 +9,7 @@ export const Grid: React.FC<GridInterface> = ({
   xs = 12,
   ...props
 }) => (
-  <MuiGrid item={!props.container} xs={xs} {...props} component={component}>
+  <MuiGrid item={!props.container} xs={xs} component={component} {...props}>
     {children}
   </MuiGrid>
 );

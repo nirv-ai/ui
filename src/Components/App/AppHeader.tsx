@@ -47,7 +47,7 @@ export const AppHeaderActions = () => (
 );
 
 export const AppHeader = () => (
-  <Grid component="header" flexDirection="column" display="flex">
+  <Grid component="header" flexDirection="column" display="flex" mt="0">
     <AppHeaderLogo />
     <AppHeaderActions />
   </Grid>

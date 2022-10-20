@@ -6,7 +6,7 @@ import { PlayerPlayForm } from "./PlayerPlayForm";
 
 export const PlayerPlayScreen = () => (
   <Grid component="article">
-    <PlayerPlayAbout />
+    <PlayerPlayAbout mt="2rem" />
     <PlayerPlayForm />
   </Grid>
 );

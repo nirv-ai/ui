@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Grid, H2, P, TextBold } from "Library";
+import { Grid, H2, P, TextBold, type GridInterface } from "Library";
 
-export const PlayerPlayAbout = () => (
-  <Grid component="section">
+export const PlayerPlayAbout: React.FC<GridInterface> = (props) => (
+  <Grid component="section" {...props}>
     <H2>Ready Player One?</H2>
     <P>
       Its time for you to continue on your path, and conquer the simulation.
