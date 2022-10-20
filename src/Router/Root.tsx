@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 import { Grid } from "Library";
 import { AppHeader } from "Components";
-import { RootTheme } from "./RootTheme";
+import { Theme } from "Theme";
 
 export const Root = () => (
   <>
-    <ThemeProvider theme={RootTheme}>
+    <ThemeProvider theme={Theme}>
       <CssBaseline />
       <Container disableGutters>
         <Box sx={{ flexGrow: 1 }}>
