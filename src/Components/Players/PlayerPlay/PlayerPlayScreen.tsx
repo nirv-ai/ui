@@ -2,11 +2,11 @@ import React from "react";
 
 import { Grid } from "Library";
 import { PlayersAbout } from "Components";
-import { PlayerJoinForm } from "./PlayerJoinForm";
+import { PlayerPlayForm } from "./PlayerPlayForm";
 
-export const PlayerJoinScreen = () => (
+export const PlayerPlayScreen = () => (
   <Grid xs={12} component="article">
     <PlayersAbout />
-    <PlayerJoinForm />
+    <PlayerPlayForm />
   </Grid>
 );

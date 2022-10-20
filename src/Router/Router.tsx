@@ -9,6 +9,7 @@ import {
   LearnScreen,
   PlayerDetail,
   PlayerJoinScreen,
+  PlayerPlayScreen,
 } from "Components";
 import { playerActions } from "./Actions";
 import { playerLoaders } from "./Loaders";
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             path: "join/player",
             action: playerActions.validatePlayerJoinForm,
             element: <PlayerJoinScreen />,
+          },
+          {
+            path: "play/player",
+            element: <PlayerPlayScreen />,
+            action: playerActions.validatePlayerPlayForm,
           },
           {
             path: "learn",

@@ -2,15 +2,14 @@
  * TODO: needs to switch on path, currently only usable for app landing
  */
 import React from "react";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { Grid } from "Library";
+import { Grid, Stack } from "Library";
 
 const AppHeaderLogo = () => (
   <Grid xs={12} component="section">
     <Stack
-      component="section"
       spacing={2}
       direction="row"
       sx={{ height: "150px", backgroundColor: "#EEEEEE" }}
@@ -56,8 +55,8 @@ const AppHeaderActions = () => (
     }}
   >
     <Link to="join/player">JOIN</Link>
-    <span>LOGIN</span>
-    <Link to="/learn">LEARN</Link>
+    <Link to="play/player">PLAY</Link>
+    <Link to="learn">LEARN</Link>
   </Stack>
 );
 
