@@ -5,40 +5,11 @@ import React from "react";
 import { Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-import { Grid, Stack } from "Library";
+import { Grid, Stack, TextBold, TextLight } from "Library";
 
-const AppHeaderLogo = () => (
+export const AppHeaderLogo = () => (
   <Grid component="section">
-    <Stack
-      direction="row"
-      sx={{ height: "150px", backgroundColor: "#EEEEEE" }}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Box
-        component="h1"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        fontSize="calc(64px + 2vmin)"
-      >
-        NIRV.ai
-      </Box>
-      <Box
-        component="section"
-        display="grid"
-        gridTemplateColumns="repeat(2, 1fr)"
-        gridRow="auto auto"
-        justifyContent="center"
-        alignItems="center"
-        fontSize="calc(16px + 2vmin)"
-      >
-        <div>N</div>
-        <div>I</div>
-        <div>R</div>
-        <div>V</div>
-      </Box>
-    </Stack>
+    <TextBold fontSize="calc(64px + 2vmin)">NIRV.ai</TextBold>
   </Grid>
 );
 
@@ -46,7 +17,7 @@ const AppHeaderLogo = () => (
 const isActiveClassName = ({ isActive, isPending }) =>
   isActive ? "active" : isPending ? "pending" : "";
 
-const AppHeaderActions = () => (
+export const AppHeaderActions = () => (
   <Stack
     direction="row"
     justifyContent="center"
@@ -56,14 +27,17 @@ const AppHeaderActions = () => (
       height: "100px",
     }}
   >
+    <NavLink to="/" className={isActiveClassName}>
+      <TextBold>home</TextBold>
+    </NavLink>
     <NavLink to="join/player" className={isActiveClassName}>
-      JOIN
+      <TextBold>join</TextBold>
     </NavLink>
     <NavLink to="play/player" className={isActiveClassName}>
-      PLAY
+      <TextBold>play</TextBold>
     </NavLink>
     <NavLink to="learn" className={isActiveClassName}>
-      LEARN
+      <TextBold>learn</TextBold>
     </NavLink>
   </Stack>
 );

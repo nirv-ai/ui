@@ -7,10 +7,11 @@ import {
   ListItem as MuiListItem,
   ListItemText as MuiListItemText,
   ListItemAvatar as MuiListItemAvatar,
-  Avatar as MuiAvatar,
   Divider,
   type ListProps,
 } from "@mui/material";
+
+import { Avatar } from "Library";
 
 export type ListDataBaseType = {
   key?: string;
@@ -40,11 +41,7 @@ export const createListItem = (data: ListDataItemType) => {
       return (
         <MuiListItem key={data.key || data.src}>
           <MuiListItemAvatar>
-            <MuiAvatar
-              alt={data.alt}
-              src={data.src}
-              sx={{ width: data.width, height: data.height }}
-            />
+            <Avatar {...data} />
           </MuiListItemAvatar>
         </MuiListItem>
       );

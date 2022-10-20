@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Grid } from "Library";
+import { Grid, P } from "Library";
 import { AppStats } from ".";
 
 export const AppAbout = () => (
   <Grid component="article">
-    <p>
+    <P>
       NIRV.ai is a lifestyle management platform for players to socialize and
       optimize lifestyle choices
-    </p>
+    </P>
     <AppStats />
   </Grid>
 );

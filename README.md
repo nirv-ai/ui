@@ -45,3 +45,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [yarn](https://yarnpkg.com)
 - [store2](https://github.com/nbubna/store)
 - [react-spring](https://react-spring.dev/)
+- [fontsource](https://fontsource.org/)
