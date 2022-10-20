@@ -1,17 +1,37 @@
-import { redirect, type ActionFunction } from "react-router-dom";
+import { type ActionFunction } from "react-router-dom";
 
-import { ClientStore, FormDataManager } from "Library";
+import {
+  authnzDataConfig,
+  ClientStore,
+  FormDataManager,
+  playerDataConfig,
+  type PlayerDataInterface,
+} from "Data";
+import { InvalidDataError } from "Errors";
+
+export type ValidatePlayerPlayFormType = Error | PlayerDataInterface;
 
 export const validatePlayerPlayForm: ActionFunction = async ({
   request, // Fetch Request
   params, // url params
-}) => {
+}): Promise<ValidatePlayerPlayFormType> => {
   const formData = FormDataManager.parse(await request.formData());
 
-  const playerStore = await ClientStore({ namespace: "players" });
+  // TODO: this should be a request to the bff
+  // TODO: the bff will never return the password
+  const playerStore = await ClientStore({
+    namespace: playerDataConfig.store.name,
+  });
+  const player = playerStore(formData.callsign) as PlayerDataInterface;
 
-  const player = playerStore(formData.callsign);
+  // user doesnt exist
+  if (!player) return InvalidDataError();
 
-  if (player?.password === formData.password)
-    return redirect(`/player/${player.callsign}`);
+  // TODO: this should save a server side JWT
+  const authStore = await ClientStore({
+    namespace: authnzDataConfig.store.name,
+  });
+  authStore(authnzDataConfig.store.keys.player, player.callsign);
+
+  return player;
 };

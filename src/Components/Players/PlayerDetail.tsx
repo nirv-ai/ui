@@ -3,16 +3,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { Grid, List } from "Library";
-
-export interface PlayerDataInterface {
-  email: string;
-  about: string;
-  avatar: string;
-  callsign: string;
-  first: string;
-  last: string;
-  password: string;
-}
+import { type PlayerDataInterface } from "Data";
 
 export interface PlayerDetailLoaderData {
   player: PlayerDataInterface;
@@ -26,7 +17,7 @@ export const PlayerDetail = () => {
     [
       {
         src: avatar,
-        alt: "player avatar",
+        alt: `${callsign}'s avatar`,
         type: "img" as const,
         width: 200,
         height: 200,

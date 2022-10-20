@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Grid } from "Library";
 import { AppHeader } from "Components";
 import { Theme } from "Theme";
+import { AuthnzContextProvider, PlayerContextProvider } from "Data";
 
 export const Root = () => (
   <>
@@ -13,10 +14,14 @@ export const Root = () => (
       <Container disableGutters>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container component="section">
-            <AppHeader />
-            <Container>
-              <Outlet />
-            </Container>
+            <AuthnzContextProvider>
+              <PlayerContextProvider>
+                <AppHeader />
+              </PlayerContextProvider>
+              <Container>
+                <Outlet />
+              </Container>
+            </AuthnzContextProvider>
           </Grid>
         </Box>
       </Container>
