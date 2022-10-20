@@ -20,7 +20,7 @@ export const PlayerJoinForm = () => {
           type="url"
         />
       </Stack>
-      <Button type="submit">
+      <Button type="submit" sx={{ marginTop: "1rem" }}>
         <TextBold>submit</TextBold>
       </Button>
     </Form>

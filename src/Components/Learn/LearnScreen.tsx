@@ -10,7 +10,7 @@ import {
 
 export const LearnScreen = () => (
   <Grid component="main">
-    <PathsAbout />
+    <PathsAbout mt="2rem" />
     <ActionsAbout />
     <SkillsAbout />
     <PlayersAbout />

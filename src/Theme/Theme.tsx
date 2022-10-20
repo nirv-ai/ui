@@ -4,9 +4,11 @@
  * https://mui.com/material-ui/customization/default-theme/
  * https://bareynol.github.io/mui-theme-creator/
  * https://m2.material.io/inline-tools/color/
+ * https://mui.com/material-ui/customization/spacing/#main-content
  */
 // TODO: https://mui.com/material-ui/guides/composition
 // TODO: https://mui.com/material-ui/customization/theming
+// TODO: https://m2.material.io/design/layout/understanding-layout.html
 
 import { createTheme, type LinkProps } from "@mui/material";
 import "@fontsource/roboto/300.css";
@@ -31,6 +33,7 @@ const styleOverrides = `
 `;
 
 export const Theme = createTheme({
+  spacing: 8,
   components: {
     MuiCssBaseline: { styleOverrides },
     MuiLink: {

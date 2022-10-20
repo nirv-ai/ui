@@ -6,7 +6,7 @@ import { PlayerJoinForm } from "./PlayerJoinForm";
 
 export const PlayerJoinScreen = () => (
   <Grid component="article">
-    <PlayersAbout />
+    <PlayersAbout mt="2rem" />
     <PlayerJoinForm />
   </Grid>
 );

@@ -4,9 +4,14 @@ import { Typography, type TypographyProps } from "@mui/material";
 export const TextComponent: React.FC<TypographyProps> = ({
   children,
   fontSize = "16px",
+  gutterBottom = true,
   ...props
 }) => (
-  <Typography fontSize={`calc(${fontSize} + 2vmin)`} {...props}>
+  <Typography
+    fontSize={`calc(${fontSize} + 2vmin)`}
+    gutterBottom={gutterBottom}
+    {...props}
+  >
     {children}
   </Typography>
 );
