@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { Box } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Grid, Stack, TextBold, TextLight } from "Library";
 
@@ -13,9 +13,13 @@ export const AppHeaderLogo = () => (
   </Grid>
 );
 
-// @ts-ignore
-const isActiveClassName = ({ isActive, isPending }) =>
-  isActive ? "active" : isPending ? "pending" : "";
+export interface IsActiveClassNameInterface {
+  ({ isActive, isPending }: { isActive: boolean; isPending: boolean }): string;
+}
+const isActiveClassName: IsActiveClassNameInterface = ({
+  isActive,
+  isPending,
+}) => (isActive ? "active" : isPending ? "pending" : "");
 
 export const AppHeaderActions = () => (
   <Stack
@@ -27,18 +31,18 @@ export const AppHeaderActions = () => (
       height: "100px",
     }}
   >
-    <NavLink to="/" className={isActiveClassName}>
+    <Link to="/">
       <TextBold>home</TextBold>
-    </NavLink>
-    <NavLink to="join/player" className={isActiveClassName}>
+    </Link>
+    <Link to="join/player">
       <TextBold>join</TextBold>
-    </NavLink>
-    <NavLink to="play/player" className={isActiveClassName}>
+    </Link>
+    <Link to="play/player">
       <TextBold>play</TextBold>
-    </NavLink>
-    <NavLink to="learn" className={isActiveClassName}>
+    </Link>
+    <Link to="learn">
       <TextBold>learn</TextBold>
-    </NavLink>
+    </Link>
   </Stack>
 );
 
