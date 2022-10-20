@@ -1,9 +1,25 @@
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, useActionData, useNavigate } from "react-router-dom";
 
-import { TextField, Stack, TextBold, Button } from "Library";
+import { type ValidatePlayerJoinFormType } from "Router/Actions/Player";
+import { TextField, Stack, Button } from "Library";
 
 export const PlayerJoinForm = () => {
+  const response = useActionData() as ValidatePlayerJoinFormType;
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!response) return void 0;
+
+    // TODO: show toast
+    if (response instanceof Error) {
+      return console.error(response);
+    }
+
+    // TODO: update context with player and authnz
+    navigate(`/player/${response.callsign}`);
+  }, [response, navigate]);
+
   return (
     <Form method="post" autoComplete="off">
       <Stack>
@@ -21,7 +37,7 @@ export const PlayerJoinForm = () => {
         />
       </Stack>
       <Button type="submit" sx={{ marginTop: "1rem" }}>
-        <TextBold>submit</TextBold>
+        submit
       </Button>
     </Form>
   );
