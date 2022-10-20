@@ -6,7 +6,7 @@ import { TextField, Stack } from "Library";
 export const PlayerPlayForm = () => {
   return (
     <Form method="post" autoComplete="off">
-      <Stack spacing={2}>
+      <Stack>
         <TextField id="new-player-callsign" name="callsign" />
         <TextField id="new-player-pass" name="password" type="password" />
       </Stack>

@@ -9,7 +9,7 @@ import {
 } from "Components";
 
 export const LearnScreen = () => (
-  <Grid xs={12} component="main">
+  <Grid component="main">
     <PathsAbout />
     <ActionsAbout />
     <SkillsAbout />

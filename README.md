@@ -40,7 +40,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [create react app](https://create-react-app.dev/)
 - [mui](https://mui.com/material-ui/)
 - [react router](https://reactrouter.com/en/main)
-  - continue: https://reactrouter.com/en/main/start/tutorial#data-writes--html-forms
+  - continue: https://reactrouter.com/en/main/start/tutorial#updating-data
 - [typescript](https://www.typescriptlang.org/)
 - [yarn](https://yarnpkg.com)
 - [store2](https://github.com/nbubna/store)
+- [react-spring](https://react-spring.dev/)
