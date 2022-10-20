@@ -6,9 +6,10 @@ import { TextField, Stack } from "Library";
 export const PlayerJoinForm = () => {
   return (
     <Form method="post" autoComplete="off">
-      <Stack spacing={2}>
+      <Stack>
         <TextField id="new-player-callsign" name="callsign" />
         <TextField id="new-player-pass" name="password" type="password" />
+        <TextField id="new-player-email" name="email" type="email" />
         <TextField name="first" id="new-player-first" />
         <TextField name="last" id="new-player-last" />
         <TextField name="about" id="new-player-about" multiline />

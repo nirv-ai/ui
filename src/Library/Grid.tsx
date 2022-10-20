@@ -3,6 +3,13 @@ import { Unstable_Grid2 as MuiGrid, type Grid2Props } from "@mui/material"; // G
 
 export interface GridInterface extends Grid2Props {}
 
-export const Grid: React.FC<GridInterface> = ({ children, ...props }) => (
-  <MuiGrid {...props}>{children}</MuiGrid>
+export const Grid: React.FC<GridInterface> = ({
+  children,
+  component = "div",
+  xs = 12,
+  ...props
+}) => (
+  <MuiGrid item={!props.container} xs={xs} {...props} component={component}>
+    {children}
+  </MuiGrid>
 );

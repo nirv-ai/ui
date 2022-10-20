@@ -3,14 +3,13 @@
  */
 import React from "react";
 import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { Grid, Stack } from "Library";
 
 const AppHeaderLogo = () => (
-  <Grid xs={12} component="section">
+  <Grid component="section">
     <Stack
-      spacing={2}
       direction="row"
       sx={{ height: "150px", backgroundColor: "#EEEEEE" }}
       justifyContent="center"
@@ -43,9 +42,12 @@ const AppHeaderLogo = () => (
   </Grid>
 );
 
+// @ts-ignore
+const isActiveClassName = ({ isActive, isPending }) =>
+  isActive ? "active" : isPending ? "pending" : "";
+
 const AppHeaderActions = () => (
   <Stack
-    spacing={2}
     direction="row"
     justifyContent="center"
     alignItems="center"
@@ -54,14 +56,20 @@ const AppHeaderActions = () => (
       height: "100px",
     }}
   >
-    <Link to="join/player">JOIN</Link>
-    <Link to="play/player">PLAY</Link>
-    <Link to="learn">LEARN</Link>
+    <NavLink to="join/player" className={isActiveClassName}>
+      JOIN
+    </NavLink>
+    <NavLink to="play/player" className={isActiveClassName}>
+      PLAY
+    </NavLink>
+    <NavLink to="learn" className={isActiveClassName}>
+      LEARN
+    </NavLink>
   </Stack>
 );
 
 export const AppHeader = () => (
-  <Grid xs={12} component="header" flexDirection="column" display="flex">
+  <Grid component="header" flexDirection="column" display="flex">
     <AppHeaderLogo />
     <AppHeaderActions />
   </Grid>

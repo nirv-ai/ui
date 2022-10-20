@@ -6,10 +6,15 @@ export const validatePlayerJoinForm: ActionFunction = async ({
   request, // Fetch Request
   params, // url params
 }) => {
-  const player = FormDataManager.parse(await request.formData());
+  const formData = FormDataManager.parse(await request.formData());
 
   const playerStore = await ClientStore({ namespace: "players" });
-  playerStore(player.callsign, player);
 
-  return redirect(`/player/${player.callsign}`);
+  const player = playerStore(formData.callsign);
+
+  if (player) return void 0;
+
+  playerStore(formData.callsign, formData);
+
+  return redirect(`/player/${formData.callsign}`);
 };
