@@ -13,10 +13,15 @@ import { AppHeaderPlayerNav } from "./AppHeaderPlayerNav";
 // }) => (isActive ? "active" : isPending ? "pending" : "");
 
 export interface AppHeaderNavInterface {
-  callsign: string;
+  callsign?: string;
+  avatar?: string;
 }
-export const AppHeaderNav: React.FC<AppHeaderNavInterface> = ({ callsign }) => {
-  if (callsign) return <AppHeaderPlayerNav callsign={callsign} />;
+export const AppHeaderNav: React.FC<AppHeaderNavInterface> = ({
+  callsign,
+  avatar,
+}) => {
+  if (callsign)
+    return <AppHeaderPlayerNav callsign={callsign} avatar={avatar} />;
 
   return <AppHeaderPublicNav />;
 };
