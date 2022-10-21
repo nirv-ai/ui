@@ -1,11 +1,12 @@
 import React from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 
-import { type ValidatePlayerJoinFormType } from "Router/Actions/Player";
-import { TextField, Stack, Button } from "Library";
+import { type PlayerDataOrErrorType } from "Types";
+import { TextField, Stack, Button, ActionField } from "Library";
+import { PLAYER_JOIN } from "Router";
 
 export const PlayerJoinForm = () => {
-  const response = useActionData() as ValidatePlayerJoinFormType;
+  const response = useActionData() as PlayerDataOrErrorType;
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -23,6 +24,7 @@ export const PlayerJoinForm = () => {
   return (
     <Form method="post" autoComplete="off">
       <Stack>
+        <ActionField actionType={PLAYER_JOIN} />
         <TextField id="new-player-callsign" name="callsign" />
         <TextField id="new-player-pass" name="password" type="password" />
         <TextField id="new-player-email" name="email" type="email" />

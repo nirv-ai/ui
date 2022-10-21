@@ -5,18 +5,20 @@ import { Outlet, useOutletContext } from "react-router-dom";
 import { Grid } from "Library";
 import { AppHeader } from "Components";
 import { Theme } from "Theme";
+
 import {
   AuthnzContextProvider,
   authnzDataConfig,
-  StoreManager,
   ContextManager,
   ContextUpdaterProvider,
+  PLAYER_KEY,
   PlayerContextProvider,
   playerDataConfig,
-  PLAYER_KEY,
+  setStoreManagerOnWindow,
+  StoreManager,
   type AuthnzDataConfigInterface,
-  type PlayerDataConfigInterface,
   type ContextManagerInterface,
+  type PlayerDataConfigInterface,
 } from "Data";
 
 export type AppStateType = {
@@ -73,6 +75,10 @@ export class App extends React.Component<{}, AppStateType> {
       playerContext,
       authnzContext,
     };
+  }
+
+  componentDidMount(): void {
+    setStoreManagerOnWindow();
   }
 
   render() {

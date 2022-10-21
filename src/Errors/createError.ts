@@ -1,8 +1,19 @@
-export const NewError = (message: string) => new Error(message);
+/**
+ * Create arbitrary errors
+ * used for standardizing error messages
+ * @param message
+ * @returns Error
+ */
+export const BaseError = (message: string): Error => new Error(message);
 
 /**
- * e.g. when submitting a form and we dont want to reveal exactly what was wrong
+ * standard error for invalid data
+ * @returns BaseError
  */
-export const InvalidDataError = () => NewError("INVALID_DATA");
+export const InvalidDataError = () => BaseError("INVALID_DATA");
 
-export const PlayerDoesntExistError = () => NewError("PLAYER_DOESNT_EXIST");
+/**
+ * cant find a player
+ * @returns BaseError
+ */
+export const PlayerDoesntExistError = () => BaseError("PLAYER_DOESNT_EXIST");

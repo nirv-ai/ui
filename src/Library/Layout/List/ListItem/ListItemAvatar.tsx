@@ -16,7 +16,7 @@ export const ListItemAvatar: React.FC<ListItemAvatarInterface> = ({
   data,
   listItemProps,
 }) => (
-  <MuiListItem key={data.key || data.src} {...listItemProps}>
+  <MuiListItem {...listItemProps}>
     <MuiListItemAvatar>
       <Avatar {...data} />
     </MuiListItemAvatar>

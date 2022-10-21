@@ -2,9 +2,9 @@ import React from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
-import { TextField, Stack, Button } from "Library";
+import { TextField, Stack, Button, ActionField } from "Library";
 import { type ValidatePlayerPlayFormType } from "Router/Actions/Player";
-
+import { PLAYER_PLAY } from "Router";
 export const PlayerPlayForm = () => {
   const response = useActionData() as ValidatePlayerPlayFormType;
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ export const PlayerPlayForm = () => {
   return (
     <Box mt="2rem">
       <Form method="post" autoComplete="off">
+        <ActionField actionType={PLAYER_PLAY} />
         <Stack>
           <TextField id="new-player-callsign" name="callsign" />
           <TextField id="new-player-pass" name="password" type="password" />

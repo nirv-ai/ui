@@ -20,7 +20,7 @@ export const ListItemText: React.FC<ListItemTextInterface> = ({
   data,
   listItemProps,
 }) => (
-  <MuiListItem key={data.key || data.text} {...listItemProps}>
+  <MuiListItem {...listItemProps}>
     <MuiListItemText>{data.text}</MuiListItemText>
   </MuiListItem>
 );

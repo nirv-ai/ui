@@ -14,11 +14,11 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
+    "strictNullChecks": true,
+    "target": "es2017"
   },
   "include": ["src", "todo/App.test.tsx"]
 }

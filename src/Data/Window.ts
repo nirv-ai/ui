@@ -1,6 +1,8 @@
-import { StoreManager } from "./ClientStore";
+import { StoreManager } from "./StoreManager";
 
-if (typeof window !== "undefined") {
-  // @ts-ignore
-  window.StoreManager = StoreManager;
-}
+export const setStoreManagerOnWindow = () => {
+  if (typeof window !== "undefined") {
+    // @ts-ignore
+    window.StoreManager = StoreManager;
+  }
+};
