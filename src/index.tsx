@@ -1,3 +1,5 @@
+// TODO: removing "^" from package.json deps causes rendering errors?
+// TODO: moving shit into devDeps causes rendering errors?
 import React from "react";
 import ReactDOM from "react-dom/client";
 

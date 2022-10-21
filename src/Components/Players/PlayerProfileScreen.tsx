@@ -3,13 +3,14 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { Grid, List, NotFound } from "Library";
-import { type PlayerDataInterface } from "Data";
+import { type LoadPlayerType } from "Router";
 
-export interface PlayerDetailLoaderData {
-  player: PlayerDataInterface;
-}
-export const PlayerDetail = () => {
-  const loaderData = useLoaderData() as PlayerDetailLoaderData;
+const listItemProps = {
+  sx: { textAlign: "center", justifyContent: "center", alignItems: "center" },
+};
+
+export const PlayerProfileScreen = () => {
+  const loaderData = useLoaderData() as LoadPlayerType;
 
   const renderPlayer = () => {
     if (loaderData instanceof Error) return <NotFound />;
@@ -23,19 +24,20 @@ export const PlayerDetail = () => {
         {
           src: avatar,
           alt: `${callsign}'s avatar`,
-          type: "img" as const,
+          type: "avatar",
           width: 200,
           height: 200,
         },
-        { text: callsign, type: "text" as const },
+        { text: callsign, type: "text" },
       ],
       [
-        { text: first, type: "text" as const },
-        { text: last, type: "text" as const },
-        { text: about, type: "text" as const },
+        { text: first, type: "text" },
+        { text: last, type: "text" },
+        { text: about, type: "text" },
       ],
     ];
-    return <List listData={listData} />;
+
+    return <List listData={listData} listItemProps={listItemProps} />;
   };
 
   return (
