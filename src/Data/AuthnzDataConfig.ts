@@ -1,17 +1,17 @@
 import { type DataConfigInterface } from ".";
 
+export type AuthnzDataContextType = DataConfigInterface["context"] & {
+  player: string;
+};
+
 export interface AuthnzDataConfigInterface extends DataConfigInterface {
-  context: Omit<DataConfigInterface["context"], "update"> & {
-    update: (contextName: string, next: { player: string }) => void;
-    player: string;
-  };
+  context: AuthnzDataContextType;
 }
 
 // authentication & authorization data,
 export const authnzDataConfig: AuthnzDataConfigInterface = {
   context: {
     contextName: "AUTHNZ_CONTEXT",
-    update: (key, next) => {},
     player: "",
   },
   store: {
@@ -21,3 +21,8 @@ export const authnzDataConfig: AuthnzDataConfigInterface = {
     },
   },
 };
+
+export type AuthnzDataContextUpdater = (
+  contextName: AuthnzDataConfigInterface["context"]["contextName"],
+  next: Partial<AuthnzDataContextType>
+) => void;
