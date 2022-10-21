@@ -1,9 +1,9 @@
 // TODO: removing "^" from package.json deps causes rendering errors?
 // TODO: moving shit into devDeps causes rendering errors?
+// TODO: continue to add jsdocs to all fns, components, etc n things
+// TODO: enable top level await in webopack: https://marmelab.com/blog/2021/07/22/cra-webpack-no-eject.html
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import "./Data/Window";
 
 import { Router } from "Router";
 import reportWebVitals from "./reportWebVitals";

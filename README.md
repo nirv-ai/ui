@@ -50,7 +50,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [store2](https://github.com/nbubna/store)
 - [react-spring](https://react-spring.dev/)
 - [fontsource](https://fontsource.org/)
+- [ramda](https://ramdajs.com/docs/)
 
 ## FYI
 
 - never `import blah from "."` for some reason create react app fails with weird `typescript cant import webpack module 0` or something like that
+- `StoreManager` is made available at `window.StoreManager`, e.g. to clear store `StoreManager.store(false)`

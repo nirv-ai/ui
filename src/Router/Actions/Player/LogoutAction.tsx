@@ -2,17 +2,16 @@ import { type ActionFunction } from "react-router-dom";
 
 import { InvalidDataError } from "Errors";
 import {
-  authnzDataConfig,
-  ClientStore,
+  getAuthnzStore,
+  getPlayerStore,
   FormDataManager,
-  playerDataConfig,
   PLAYER_KEY,
   type PlayerDataInterface,
 } from "Data";
 
 export type ValidatePlayerJoinFormType = Error | PlayerDataInterface;
 
-export const validatePlayerJoinForm: ActionFunction = async ({
+export const logoutAction: ActionFunction = async ({
   request, // Fetch Request
   params, // url params
 }): Promise<ValidatePlayerJoinFormType> => {
@@ -23,9 +22,7 @@ export const validatePlayerJoinForm: ActionFunction = async ({
 
   // TODO: this should be a call to the bff
   // TODO: the bff will never return the password
-  const playerStore = await ClientStore({
-    namespace: playerDataConfig.store.storeName,
-  });
+  const playerStore = await getPlayerStore();
   const player = playerStore(formData.callsign);
 
   // user already exists
@@ -34,10 +31,9 @@ export const validatePlayerJoinForm: ActionFunction = async ({
   playerStore(formData.callsign, formData);
 
   // TODO: this should save a server side JWT
-  const authStore = await ClientStore({
-    namespace: authnzDataConfig.store.storeName,
-  });
-  authStore(PLAYER_KEY, formData.callsign);
+  const authnzStore = await getAuthnzStore();
+
+  authnzStore(PLAYER_KEY, formData.callsign);
 
   return formData;
 };

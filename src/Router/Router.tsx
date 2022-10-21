@@ -11,10 +11,9 @@ import {
   PlayerPlayScreen,
   App,
 } from "Components";
-import { playerActions } from "./Actions";
+import { ActionPipeline } from "./Actions";
 import { playerLoaders } from "./Loaders";
 
-const Div = () => <div>hello</div>;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,13 +30,13 @@ const router = createBrowserRouter([
           },
           {
             path: "join/player", // signup
-            action: playerActions.validatePlayerJoinForm,
+            action: ActionPipeline,
             element: <PlayerJoinScreen />,
           },
           {
             path: "play/player", // login
             element: <PlayerPlayScreen />,
-            action: playerActions.validatePlayerPlayForm,
+            action: ActionPipeline,
           },
           {
             path: "learn", // all about NIRV.ai

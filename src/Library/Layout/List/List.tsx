@@ -24,9 +24,13 @@ export const List: React.FC<ListInterface> = ({
 
   listData.forEach((dataGroup, i) => {
     listItemGroups.push([]);
-    dataGroup.forEach((data) => {
+    dataGroup.forEach((data, x) => {
       listItemGroups[i].push(
-        <ListItem data={data} listItemProps={listItemProps} />
+        <ListItem
+          key={`${data.key}-${i}-${x}`}
+          data={data}
+          listItemProps={listItemProps}
+        />
       );
     });
   });
