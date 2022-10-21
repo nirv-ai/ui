@@ -6,6 +6,7 @@ import {
   ClientStore,
   FormDataManager,
   playerDataConfig,
+  PLAYER_KEY,
   type PlayerDataInterface,
 } from "Data";
 
@@ -36,7 +37,7 @@ export const validatePlayerJoinForm: ActionFunction = async ({
   const authStore = await ClientStore({
     namespace: authnzDataConfig.store.storeName,
   });
-  authStore(authnzDataConfig.store.keys.player, formData.callsign);
+  authStore(PLAYER_KEY, formData.callsign);
 
   return formData;
 };

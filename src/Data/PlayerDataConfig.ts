@@ -1,4 +1,5 @@
-import { type DataConfigInterface } from ".";
+import { type DataConfigInterface } from "./DataConfig";
+import * as K from "./DataKeys";
 
 export interface PlayerDataInterface {
   email: string;
@@ -11,7 +12,7 @@ export interface PlayerDataInterface {
 }
 
 export type PlayerDataContextType = DataConfigInterface["context"] & {
-  player: PlayerDataInterface;
+  [K.PLAYER_KEY]: PlayerDataInterface;
 };
 
 // all user data, keys are the players callsign
@@ -22,7 +23,7 @@ export interface PlayerDataConfigInterface extends DataConfigInterface {
 export const playerDataConfig: PlayerDataConfigInterface = {
   context: {
     contextName: "PLAYER_CONTEXT",
-    player: {
+    [K.PLAYER_KEY]: {
       email: "",
       about: "",
       avatar: "",
@@ -34,8 +35,6 @@ export const playerDataConfig: PlayerDataConfigInterface = {
   },
   store: {
     storeName: "PLAYERS_STORE",
-    // players are saved under their callsign
-    keys: {},
   },
 };
 

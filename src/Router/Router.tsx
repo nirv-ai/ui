@@ -1,18 +1,20 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { NotFound } from "Library";
+
 import {
   AppLandingScreen,
   LearnScreen,
   PlayerDetail,
   PlayerJoinScreen,
   PlayerPlayScreen,
-  NotFound,
   App,
 } from "Components";
 import { playerActions } from "./Actions";
 import { playerLoaders } from "./Loaders";
 
+const Div = () => <div>hello</div>;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,4 +54,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const AppRouter = () => <RouterProvider router={router} />;
+export const Router = () => <RouterProvider router={router} />;

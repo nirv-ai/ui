@@ -3,3 +3,4 @@ export * from "./Images";
 export * from "./Layout";
 export * from "./Messages";
 export * from "./Text";
+export * from "./NotFound";

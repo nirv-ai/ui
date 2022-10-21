@@ -1,7 +1,8 @@
-import { type DataConfigInterface } from ".";
+import { type DataConfigInterface } from "./DataConfig";
+import * as K from "./DataKeys";
 
 export type AuthnzDataContextType = DataConfigInterface["context"] & {
-  player: string;
+  [K.PLAYER_KEY]: string;
 };
 
 export interface AuthnzDataConfigInterface extends DataConfigInterface {
@@ -12,13 +13,10 @@ export interface AuthnzDataConfigInterface extends DataConfigInterface {
 export const authnzDataConfig: AuthnzDataConfigInterface = {
   context: {
     contextName: "AUTHNZ_CONTEXT",
-    player: "",
+    [K.PLAYER_KEY]: "",
   },
   store: {
-    storeName: "AUTHNZ",
-    keys: {
-      player: "", // user logged in as this player
-    },
+    storeName: "AUTHNZ_STORE",
   },
 };
 
