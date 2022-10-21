@@ -2,7 +2,7 @@ import { type DataConfigInterface } from ".";
 
 export interface AuthnzDataConfigInterface extends DataConfigInterface {
   context: Omit<DataConfigInterface["context"], "update"> & {
-    update: (key: string, next: { player: string }) => void;
+    update: (contextName: string, next: { player: string }) => void;
     player: string;
   };
 }
