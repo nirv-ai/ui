@@ -6,6 +6,8 @@ import {
 
 /**
  * FYI: you can also just do <AnyMuiComponent component={NavLink} />
+ * @see https://mui.com/material-ui/guides/routing/
+ * use as import { Link, Button } from '@mui/material, <LinkOrButton href="poop">click me</LinkOrButton>
  */
 export const LinkBehavior = React.forwardRef<
   HTMLAnchorElement,

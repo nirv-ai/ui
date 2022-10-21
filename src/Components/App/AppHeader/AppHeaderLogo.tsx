@@ -13,6 +13,14 @@ export const AppHeaderLogoHuge: React.FC<AppHeaderLogoHugeInterface> = ({
 }) =>
   shouldRender ? (
     <Grid component="section">
-      <TextBold fontSize="64px">NIRV.ai</TextBold>
+      <TextBold
+        fontSize="64px"
+        sx={{
+          fontFamily: "monospace",
+          letterSpacing: ".3rem",
+        }}
+      >
+        NIRV.ai
+      </TextBold>
     </Grid>
   ) : null;

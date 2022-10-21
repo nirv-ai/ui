@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@mui/material";
 
 import { Stack, TextBold } from "Library";
 
+const linkSx = { fontFamily: "monospace" };
 export const AppHeaderPublicNav = () => (
   <Stack
     direction="row"
@@ -13,17 +14,25 @@ export const AppHeaderPublicNav = () => (
       height: "100px",
     }}
   >
-    <Link to="/">
-      <TextBold fontSize="12px">home</TextBold>
+    <Link href="/">
+      <TextBold fontSize="12px" sx={linkSx}>
+        home
+      </TextBold>
     </Link>
-    <Link to="join/player">
-      <TextBold fontSize="12px">join</TextBold>
+    <Link href="join/player">
+      <TextBold fontSize="12px" sx={linkSx}>
+        join
+      </TextBold>
     </Link>
-    <Link to="play/player">
-      <TextBold fontSize="12px">play</TextBold>
+    <Link href="play/player">
+      <TextBold fontSize="12px" sx={linkSx}>
+        play
+      </TextBold>
     </Link>
-    <Link to="learn">
-      <TextBold fontSize="12px">learn</TextBold>
+    <Link href="learn">
+      <TextBold fontSize="12px" sx={linkSx}>
+        learn
+      </TextBold>
     </Link>
   </Stack>
 );
