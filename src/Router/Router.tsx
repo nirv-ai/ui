@@ -6,7 +6,7 @@ import { NotFound } from "Library";
 import {
   AppLandingScreen,
   LearnScreen,
-  PlayerDetail,
+  PlayerProfileScreen,
   PlayerJoinScreen,
   PlayerPlayScreen,
   App,
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
           {
             path: "player/:callsign", // a players homepage
             loader: playerLoaders.loadPlayer,
-            element: <PlayerDetail />,
+            element: <PlayerProfileScreen />,
           },
         ],
       },
