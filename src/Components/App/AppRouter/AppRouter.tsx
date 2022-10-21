@@ -10,7 +10,6 @@ import {
   NotFound,
   App,
 } from "Components";
-import { PlayerContextProvider } from "Data";
 import { playerActions } from "./Actions";
 import { playerLoaders } from "./Loaders";
 
@@ -31,19 +30,11 @@ const router = createBrowserRouter([
           {
             path: "join/player", // signup
             action: playerActions.validatePlayerJoinForm,
-            element: (
-              <PlayerContextProvider>
-                <PlayerJoinScreen />
-              </PlayerContextProvider>
-            ),
+            element: <PlayerJoinScreen />,
           },
           {
             path: "play/player", // login
-            element: (
-              <PlayerContextProvider>
-                <PlayerPlayScreen />
-              </PlayerContextProvider>
-            ),
+            element: <PlayerPlayScreen />,
             action: playerActions.validatePlayerPlayForm,
           },
           {
@@ -53,11 +44,7 @@ const router = createBrowserRouter([
           {
             path: "player/:callsign", // a players homepage
             loader: playerLoaders.loadPlayer,
-            element: (
-              <PlayerContextProvider>
-                <PlayerDetail />
-              </PlayerContextProvider>
-            ),
+            element: <PlayerDetail />,
           },
         ],
       },

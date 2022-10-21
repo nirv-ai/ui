@@ -10,18 +10,18 @@ export interface PlayerDataInterface {
   password?: string;
 }
 
+export type PlayerDataContextType = DataConfigInterface["context"] & {
+  player: PlayerDataInterface;
+};
+
 // all user data, keys are the players callsign
 export interface PlayerDataConfigInterface extends DataConfigInterface {
-  context: Omit<DataConfigInterface["context"], "update"> & {
-    player: PlayerDataInterface;
-    update: (contextName: string, next: Partial<PlayerDataInterface>) => void;
-  };
+  context: PlayerDataContextType;
 }
 
 export const playerDataConfig: PlayerDataConfigInterface = {
   context: {
     contextName: "PLAYER_CONTEXT",
-    update: (key, next) => {},
     player: {
       email: "",
       about: "",
@@ -38,3 +38,8 @@ export const playerDataConfig: PlayerDataConfigInterface = {
     keys: {},
   },
 };
+
+export type PlayerDataContextUpdater = (
+  contextName: PlayerDataConfigInterface["context"]["contextName"],
+  next: Partial<PlayerDataInterface>
+) => void;

@@ -2,6 +2,7 @@
 export * from "./AuthnzContext";
 export * from "./AuthnzDataConfig";
 export * from "./ClientStore";
+export * from "./ContextUpdater";
 export * from "./DataConfig";
 export * from "./FormDataManager";
 export * from "./PlayerContext";
