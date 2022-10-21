@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 
-import { type ValidatePlayerJoinFormType } from "Router/Actions/Player";
+import { type ValidatePlayerJoinFormType } from "Components/App/AppRouter/Actions/Player";
 import { TextField, Stack, Button } from "Library";
 
 export const PlayerJoinForm = () => {

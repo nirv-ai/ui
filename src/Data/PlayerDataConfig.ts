@@ -14,7 +14,7 @@ export interface PlayerDataInterface {
 export interface PlayerDataConfigInterface extends DataConfigInterface {
   context: Omit<DataConfigInterface["context"], "update"> & {
     player: PlayerDataInterface;
-    update: (key: string, next: Partial<PlayerDataInterface>) => void;
+    update: (contextName: string, next: Partial<PlayerDataInterface>) => void;
   };
 }
 

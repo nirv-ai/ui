@@ -14,24 +14,27 @@ import {
   type PlayerDataConfigInterface,
 } from "Data";
 
-export type RootStateType = {
-  playerContext: Omit<PlayerDataConfigInterface["context"], "contextName">;
-  authnzContext: Omit<AuthnzDataConfigInterface["context"], "contextName">;
+export type AppStateType = {
+  playerContext: PlayerDataConfigInterface["context"];
+  authnzContext: AuthnzDataConfigInterface["context"];
   [x: string]: any;
 };
 
 // TODO: add context updator functions to state and pass them into context
-export class Root extends React.Component<{}, RootStateType> {
+export class App extends React.Component<{}, AppStateType> {
+  // combines all context updaters into a single type
   updateContext: PlayerDataConfigInterface["context"]["update"] &
     AuthnzDataConfigInterface["context"]["update"];
 
   constructor(props: any) {
     super(props);
 
-    this.updateContext = (key, next) => {
-      this.setState((prev: RootStateType) => ({
-        [key]: {
-          ...prev[key],
+    // enables syncing context & state
+    // so nested comonents can update context via state
+    this.updateContext = (contextName, next) => {
+      this.setState((prev: AppStateType) => ({
+        [contextName]: {
+          ...prev[contextName],
           ...next,
         },
       }));
@@ -56,12 +59,17 @@ export class Root extends React.Component<{}, RootStateType> {
         <Container disableGutters>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container component="section">
-              <AuthnzContextProvider>
-                <PlayerContextProvider>
+              <AuthnzContextProvider context={this.state.authnzContext}>
+                <PlayerContextProvider context={this.state.playerContext}>
                   <AppHeader />
                 </PlayerContextProvider>
                 <Container>
-                  <Outlet />
+                  <Outlet
+                    context={{
+                      authnzContext: this.state.authnzContext,
+                      playerContext: this.state.playerContext,
+                    }}
+                  />
                 </Container>
               </AuthnzContextProvider>
             </Grid>

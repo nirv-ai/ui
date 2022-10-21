@@ -7,17 +7,17 @@ import {
   PlayerDetail,
   PlayerJoinScreen,
   PlayerPlayScreen,
+  NotFound,
+  App,
 } from "Components";
 import { PlayerContextProvider } from "Data";
 import { playerActions } from "./Actions";
 import { playerLoaders } from "./Loaders";
-import { NotFound } from "./NotFound";
-import { Root } from "./Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     errorElement: <NotFound />,
     children: [
       {
@@ -65,4 +65,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const Router = () => <RouterProvider router={router} />;
+export const AppRouter = () => <RouterProvider router={router} />;
