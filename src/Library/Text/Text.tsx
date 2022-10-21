@@ -56,6 +56,7 @@ export const PSmall: React.FC<TypographyProps> = (props) => (
   <TextComponent fontSize="12px" {...props} variant="body2" paragraph />
 );
 
+// TODO: component="a" throws error
 export const TextBold: React.FC<TypographyProps> = (props) => (
   <TextComponent {...props} variant="button" />
 );
