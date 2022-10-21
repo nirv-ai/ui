@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouteError } from "react-router-dom";
+import { useRouteError, useLoaderData } from "react-router-dom";
 
 import { Grid } from "Library";
 
@@ -9,7 +9,10 @@ interface ErrorType {
 }
 
 export const NotFound = () => {
-  const error = useRouteError() as ErrorType;
+  const routeError = useRouteError() as ErrorType;
+  const loaderError = useLoaderData() as ErrorType;
+
+  const error = routeError || loaderError;
 
   console.error(error);
 

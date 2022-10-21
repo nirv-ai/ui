@@ -5,6 +5,7 @@ import {
   ClientStore,
   FormDataManager,
   playerDataConfig,
+  PLAYER_KEY,
   type PlayerDataInterface,
 } from "Data";
 import { InvalidDataError } from "Errors";
@@ -31,7 +32,7 @@ export const validatePlayerPlayForm: ActionFunction = async ({
   const authStore = await ClientStore({
     namespace: authnzDataConfig.store.storeName,
   });
-  authStore(authnzDataConfig.store.keys.player, player.callsign);
+  authStore(PLAYER_KEY, player.callsign);
 
   return player;
 };

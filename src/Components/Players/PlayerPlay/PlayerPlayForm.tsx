@@ -3,7 +3,7 @@ import { Form, useActionData, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { TextField, Stack, Button } from "Library";
-import { type ValidatePlayerPlayFormType } from "Components/App/AppRouter/Actions/Player";
+import { type ValidatePlayerPlayFormType } from "Router/Actions/Player";
 
 export const PlayerPlayForm = () => {
   const response = useActionData() as ValidatePlayerPlayFormType;

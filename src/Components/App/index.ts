@@ -1,4 +1,3 @@
-export * from "./AppRouter";
 export * from "./App";
 export * from "./AppAbout";
 export * from "./AppHeader";

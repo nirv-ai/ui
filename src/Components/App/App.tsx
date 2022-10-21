@@ -8,10 +8,12 @@ import { Theme } from "Theme";
 import {
   AuthnzContextProvider,
   authnzDataConfig,
+  StoreManager,
   ContextManager,
   ContextUpdaterProvider,
   PlayerContextProvider,
   playerDataConfig,
+  PLAYER_KEY,
   type AuthnzDataConfigInterface,
   type PlayerDataConfigInterface,
   type ContextManagerInterface,
@@ -51,13 +53,29 @@ export class App extends React.Component<{}, AppStateType> {
       }));
     };
 
+    const playerStoreData =
+      StoreManager.store.namespace(playerDataConfig.store.storeName)() || {};
+    const authnzStoreData =
+      StoreManager.store.namespace(authnzDataConfig.store.storeName)() || {};
+
+    console.info("\n\n wtf is playerStore", playerStoreData, authnzStoreData);
+
+    const authnzContext = { ...authnzDataConfig.context, ...authnzStoreData };
+    const playerContext = { ...playerDataConfig.context };
+
+    if (authnzStoreData[PLAYER_KEY]) {
+      playerContext[PLAYER_KEY] = playerStoreData[authnzStoreData[PLAYER_KEY]];
+    }
+
+    console.info("\n\n got player from store", playerContext);
+
     this.state = {
       ContextManager: {
         ...ContextManager,
         updateContext: this.updateContext,
       },
-      playerContext: playerDataConfig.context,
-      authnzContext: authnzDataConfig.context,
+      playerContext,
+      authnzContext,
     };
   }
 
