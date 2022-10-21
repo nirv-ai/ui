@@ -39,7 +39,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 - [create react app](https://create-react-app.dev/)
 - [mui](https://mui.com/material-ui/)
+- [mui icons](https://mui.com/material-ui/material-icons)
+  - todo
 - [react router](https://reactrouter.com/en/main)
+  - continue: first handle logout in AppHeaderActions
   - continue: https://reactrouter.com/en/main/start/tutorial#updating-data
 - [typescript](https://www.typescriptlang.org/)
 - [typescript utility](https://www.typescriptlang.org/docs/handbook/utility-types.html)
@@ -47,3 +50,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [store2](https://github.com/nbubna/store)
 - [react-spring](https://react-spring.dev/)
 - [fontsource](https://fontsource.org/)
+
+## FYI
+
+- never `import blah from "."` for some reason create react app fails with weird `typescript cant import webpack module 0` or something like that
