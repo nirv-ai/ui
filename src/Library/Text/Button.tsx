@@ -1,12 +1,12 @@
 // TODO: need to finish button types from docs: https://mui.com/material-ui/react-button
-import React from "react";
+import * as React from "react";
 import { Button as MuiButton, type ButtonProps } from "@mui/material";
 import { useSubmit, type SubmitOptions } from "react-router-dom";
 
 import { ContextUpdaterContext, AUTHNZ_CONTEXT_NAME, PLAYER_KEY } from "Data";
 import { PLAYER_LOGOUT } from "Router";
 
-export interface ButtonInterface extends ButtonProps {}
+export type ButtonInterface = ButtonProps;
 
 export const ButtonBase: React.FC<ButtonInterface> = ({
   children,

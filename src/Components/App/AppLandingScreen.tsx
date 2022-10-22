@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Grid } from "Library";
 
 import { AppAbout } from ".";

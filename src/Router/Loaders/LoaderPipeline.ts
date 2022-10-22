@@ -1,13 +1,13 @@
-import { type LoaderFunction } from "react-router-dom";
+import type { LoaderFunction } from "react-router-dom";
 
 import * as Errors from "Errors";
 import { FormDataManager, type PlayerDataInterface } from "Data";
 import * as L from "./LoaderTypes";
-import * as playerLoaders from "./Player";
+// import * as playerLoaders from "./Player";
 
-type LOADER_TYPE = {
+interface LOADER_TYPE {
   LOADER_TYPE: string;
-};
+}
 
 export const LoaderPipeline: LoaderFunction = async ({ request, params }) => {
   const formData = FormDataManager.parse(await request.formData());

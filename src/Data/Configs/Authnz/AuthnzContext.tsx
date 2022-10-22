@@ -1,13 +1,13 @@
-import React from "react";
+import * as React from "react";
 
 import {
   authnzDataConfig,
   type AuthnzDataConfigInterface,
 } from "./AuthnzDataConfig";
-import { playerDataConfig } from "./PlayerDataConfig";
+import { AUTHNZ_CONTEXT_NAME } from "Data/DataKeys";
 
 export const AuthnzContext = React.createContext(authnzDataConfig.context);
-AuthnzContext.displayName = playerDataConfig.context.contextName;
+AuthnzContext.displayName = AUTHNZ_CONTEXT_NAME;
 
 export interface AuthnzContextProviderInterface {
   children: React.ReactNode;

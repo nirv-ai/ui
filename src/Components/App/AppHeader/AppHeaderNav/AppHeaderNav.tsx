@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 
 import { AppHeaderPublicNav } from "./AppHeaderPublicNav";
 import { AppHeaderPlayerNav } from "./AppHeaderPlayerNav";
@@ -16,7 +16,7 @@ export interface AppHeaderNavInterface {
   callsign?: string;
   avatar?: string;
 }
-export const AppHeaderNav: React.FC<AppHeaderNavInterface> = ({
+export const AppHeaderNav: FC<AppHeaderNavInterface> = ({
   callsign,
   avatar,
 }) => {

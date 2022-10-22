@@ -1,4 +1,4 @@
-import { type PlayerDataInterface } from "Data";
+import type { PlayerDataInterface } from "Data";
 
 // sometimes there are types that are used EVERY fkn where
 // be careful when modifying this file

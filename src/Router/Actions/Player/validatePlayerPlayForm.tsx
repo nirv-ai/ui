@@ -1,4 +1,4 @@
-import { type ActionFunction } from "react-router-dom";
+import type { ActionFunction } from "react-router-dom";
 
 import {
   getPlayerStore,
@@ -20,7 +20,9 @@ export const validatePlayerPlayForm: ActionFunction = async ({
   // TODO: this should be a request to the bff
   // TODO: the bff will never return the password
   const playerStore = await getPlayerStore();
-  const player = playerStore(formData.callsign) as PlayerDataInterface;
+  const player = playerStore(formData.callsign) as
+    | PlayerDataInterface
+    | undefined;
 
   // user doesnt exist
   if (!player) return InvalidDataError();

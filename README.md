@@ -38,6 +38,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## core components
 
 - [create react app](https://create-react-app.dev/)
+  - destructured named imports (ex. import { useState } from "react") which is the preferred style going into the future.
 - [mui](https://mui.com/material-ui/)
 - [mui icons](https://mui.com/material-ui/material-icons)
   - todo
@@ -47,10 +48,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [typescript](https://www.typescriptlang.org/)
 - [typescript utility](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 - [yarn](https://yarnpkg.com)
+  - yarn up -i -E '\*'
 - [store2](https://github.com/nbubna/store)
 - [react-spring](https://react-spring.dev/)
 - [fontsource](https://fontsource.org/)
 - [ramda](https://ramdajs.com/docs/)
+- [defintely typed](https://www.typescriptlang.org/dt/search?search=)
+- [mui system](https://mui.com/system/getting-started/usage/)
+  - read through this for the SX prop and related components
+- [husky & lint staged](https://laurieontech.com/posts/husky/)
+  - [TODO: setup image lint on lintstaged](https://github.com/okonet/lint-staged#minify-the-images)
+- [typescript eslint parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser#parseroptionsproject)
 
 ## FYI
 

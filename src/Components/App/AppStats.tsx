@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Grid, TextLight, Stack } from "Library";
 
 export const AppStats = () => (

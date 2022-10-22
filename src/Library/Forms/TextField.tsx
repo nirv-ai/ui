@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 
 import { TextField as MuiTextField, type TextFieldProps } from "@mui/material";
 
@@ -8,7 +8,7 @@ const sx = {
   },
 };
 
-export const TextField: React.FC<TextFieldProps> = ({
+export const TextField: FC<TextFieldProps> = ({
   variant = "outlined",
   required = true,
   label,
@@ -17,7 +17,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   <MuiTextField
     required={required}
     variant={variant}
-    label={label || props.name}
+    label={label ?? props.name}
     {...props}
     sx={sx}
   />

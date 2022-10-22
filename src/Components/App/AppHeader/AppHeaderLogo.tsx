@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 
 import { Grid, TextBold } from "Library";
 
@@ -6,9 +6,9 @@ export interface AppHeaderLogoInterface {
   shouldRender: boolean;
 }
 
-export interface AppHeaderLogoHugeInterface extends AppHeaderLogoInterface {}
+export type AppHeaderLogoHugeInterface = AppHeaderLogoInterface;
 
-export const AppHeaderLogoHuge: React.FC<AppHeaderLogoHugeInterface> = ({
+export const AppHeaderLogoHuge: FC<AppHeaderLogoHugeInterface> = ({
   shouldRender,
 }) =>
   shouldRender ? (

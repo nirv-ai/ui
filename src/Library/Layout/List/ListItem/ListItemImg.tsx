@@ -1,7 +1,7 @@
 // TODO: need to setup list item img, @see listitemavatar
 
-import {
-  type ListDataBaseType,
+import type {
+  ListDataBaseType,
   ListItemBaseInterface,
 } from "./ListItemBaseTypes";
 

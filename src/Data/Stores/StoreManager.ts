@@ -1,15 +1,16 @@
 import store, { type StoreType } from "store2";
 
 import {
-  type ClientStoreInterface,
+  ClientStore,
   getAuthnzStore,
   getPlayerStore,
-  ClientStore,
+  type ClientStoreInterface,
 } from "./ClientStore";
 
 export interface StoreManagerInterface {
   ClientStore: ClientStoreInterface;
   ClientStoreClear: () => void;
+  ClientStoreAll: () => void;
   getAuthnzStore: typeof getAuthnzStore;
   getPlayerStore: typeof getPlayerStore;
   store: StoreType;
@@ -21,6 +22,7 @@ export interface StoreManagerInterface {
 export const StoreManager: StoreManagerInterface = {
   ClientStore,
   ClientStoreClear: () => store(false),
+  ClientStoreAll: () => store(),
   getAuthnzStore,
   getPlayerStore,
   store,

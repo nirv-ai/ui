@@ -1,10 +1,10 @@
-export type DataConfigContextType = {
+export interface DataConfigContextType {
   contextName: string;
-};
+}
 
-export type DataConfigStoreType = {
+export interface DataConfigStoreType {
   storeName: string;
-};
+}
 
 export interface DataConfigInterface {
   /**
