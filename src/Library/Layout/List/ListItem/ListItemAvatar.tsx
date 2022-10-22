@@ -1,6 +1,6 @@
 // TODO: need to setup (i.e. read through docs) listItemAvatar, and Avatar from Mui
 
-import React from "react";
+import type { FC } from "react";
 import {
   ListItem as MuiListItem,
   ListItemAvatar as MuiListItemAvatar,
@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 
 import { Avatar } from "Library";
-import { type ListItemImgInterface } from "./ListItemImg";
+import type { ListItemImgInterface } from "./ListItemImg";
 
-export interface ListItemAvatarInterface extends ListItemImgInterface {}
+export type ListItemAvatarInterface = ListItemImgInterface;
 
-export const ListItemAvatar: React.FC<ListItemAvatarInterface> = ({
+export const ListItemAvatar: FC<ListItemAvatarInterface> = ({
   data,
   listItemProps,
 }) => (

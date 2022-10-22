@@ -1,8 +1,8 @@
-import React from "react";
+import type { FC } from "react";
 
 import { Grid, H2, P, TextBold, type GridInterface } from "Library";
 
-export const PlayerPlayAbout: React.FC<GridInterface> = (props) => (
+export const PlayerPlayAbout: FC<GridInterface> = (props) => (
   <Grid component="section" {...props}>
     <H2>Ready Player One?</H2>
     <P>

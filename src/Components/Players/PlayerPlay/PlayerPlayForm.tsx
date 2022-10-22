@@ -1,15 +1,15 @@
-import React from "react";
+import { useEffect } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { TextField, Stack, Button, ActionField } from "Library";
-import { type ValidatePlayerPlayFormType } from "Router/Actions/Player";
-import { PLAYER_PLAY } from "Router";
+import { PLAYER_PLAY, type ValidatePlayerPlayFormType } from "Router";
+
 export const PlayerPlayForm = () => {
-  const response = useActionData() as ValidatePlayerPlayFormType;
+  const response = useActionData() as ValidatePlayerPlayFormType | undefined;
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!response) return void 0;
 
     // TODO: show toast

@@ -1,15 +1,23 @@
-import React from "react";
+import { useEffect, useContext } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 
-import { type PlayerDataOrErrorType } from "Types";
+import type { PlayerDataOrErrorType } from "Types";
 import { TextField, Stack, Button, ActionField } from "Library";
 import { PLAYER_JOIN } from "Router";
+import {
+  AUTHNZ_CONTEXT_NAME,
+  ContextUpdaterContext,
+  PLAYER_CONTEXT_NAME,
+  PLAYER_KEY,
+  type ContextUpdaterInterface,
+} from "Data";
 
 export const PlayerJoinForm = () => {
-  const response = useActionData() as PlayerDataOrErrorType;
+  const response = useActionData() as PlayerDataOrErrorType | undefined;
   const navigate = useNavigate();
+  const { updateContext } = useContext(ContextUpdaterContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!response) return void 0;
 
     // TODO: show toast
@@ -18,8 +26,13 @@ export const PlayerJoinForm = () => {
     }
 
     // TODO: update context with player and authnz
+    console.info("\n\n player joned, navigating to player detail");
+
+    updateContext(PLAYER_CONTEXT_NAME, response);
+    updateContext(AUTHNZ_CONTEXT_NAME, { [PLAYER_KEY]: response.callsign });
+
     navigate(`/player/${response.callsign}`);
-  }, [response, navigate]);
+  }, [response, navigate, updateContext]);
 
   return (
     <Form method="post" autoComplete="off">

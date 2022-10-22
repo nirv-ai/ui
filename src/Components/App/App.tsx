@@ -1,4 +1,4 @@
-import React from "react";
+import { Component } from "react";
 import { Box, Container, CssBaseline, ThemeProvider } from "@mui/material";
 import { Outlet, useOutletContext } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import {
   AUTHNZ_STORE_NAME,
   AuthnzContextProvider,
   authnzDataConfig,
-  ContextManager,
+  ContextUpdaterBase,
   ContextUpdaterProvider,
   PLAYER_CONTEXT_NAME,
   PLAYER_KEY,
@@ -21,45 +21,51 @@ import {
   setStoreManagerOnWindow,
   StoreManager,
   type AuthnzDataConfigInterface,
-  type ContextManagerInterface,
+  type ContextUpdaterInterface,
   type PlayerDataConfigInterface,
+  type PlayerDataInterface,
 } from "Data";
 
-export type AppStateType = {
+export interface AppContextInterface {
   [PLAYER_CONTEXT_NAME]: PlayerDataConfigInterface["context"];
   [AUTHNZ_CONTEXT_NAME]: AuthnzDataConfigInterface["context"];
-  [x: string]: any;
-};
-
-export interface AppStateContextInterface
-  extends AppStateType,
-    ContextManagerInterface {}
+}
+export interface AppStateType extends AppContextInterface {
+  ContextManager: {
+    updateContext: ContextUpdaterInterface["updateContext"];
+  };
+}
 
 // hook for components rendered via Outlet to access app state & context
 // FYI: you can split this up tremendously to provide it piecemiel to components
 // ^ instead of sending the whole thing
 export const useAppContext = () => {
-  useOutletContext<AppStateContextInterface>();
+  useOutletContext<AppStateType>();
 };
 
-// TODO: add context updator functions to state and pass them into context
-export class App extends React.Component<{}, AppStateType> {
+export type AppProps = object;
+export class App extends Component<AppProps, AppStateType> {
   // combines all context updaters into a single type
-  updateContext: ContextManagerInterface["updateContext"];
+  updateContext: ContextUpdaterInterface["updateContext"];
 
-  constructor(props: any) {
+  constructor(props: AppProps) {
     super(props);
 
     // enables syncing context & state
     // so nested comonents can update context via state
     this.updateContext = (contextName, next) => {
       console.info("\n\n updating context", contextName, next);
-      this.setState((prevState: AppStateType, prevProps) => ({
-        [contextName]: {
-          ...prevState[contextName],
-          ...next,
-        },
-      }));
+      this.setState(
+        // @ts-expect-error dunno
+        (prevState: AppStateType) => ({
+          [contextName]: Object.assign(
+            {},
+            // @ts-expect-error dunno
+            prevState[contextName],
+            next
+          ) as AppContextInterface,
+        })
+      );
     };
 
     const playerStoreData =
@@ -71,12 +77,14 @@ export class App extends React.Component<{}, AppStateType> {
     const playerContext = { ...playerDataConfig.context };
 
     if (authnzStoreData[PLAYER_KEY]) {
-      playerContext[PLAYER_KEY] = playerStoreData[authnzStoreData[PLAYER_KEY]];
+      playerContext[PLAYER_KEY] = playerStoreData[
+        authnzStoreData[PLAYER_KEY] as string
+      ] as PlayerDataInterface;
     }
 
     this.state = {
       ContextManager: {
-        ...ContextManager,
+        ...ContextUpdaterBase,
         updateContext: this.updateContext,
       },
       [PLAYER_CONTEXT_NAME]: playerContext,
@@ -91,9 +99,9 @@ export class App extends React.Component<{}, AppStateType> {
   }
 
   componentDidUpdate(
-    prevProps: Readonly<{}>,
+    prevProps: Readonly<AppProps>,
     prevState: Readonly<AppStateType>,
-    snapshot?: any
+    snapshot?: unknown
   ): void {
     console.info("\n\n app updated", this.state);
   }
@@ -118,8 +126,8 @@ export class App extends React.Component<{}, AppStateType> {
                     <Outlet
                       context={{
                         updateContext: this.updateContext,
-                        authnzContext: this.state.authnzContext,
-                        playerContext: this.state.playerContext,
+                        authnzContext: this.state[AUTHNZ_CONTEXT_NAME],
+                        playerContext: this.state[PLAYER_CONTEXT_NAME],
                       }}
                     />
                   </Container>

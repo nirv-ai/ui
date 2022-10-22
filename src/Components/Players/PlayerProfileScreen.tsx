@@ -1,9 +1,8 @@
 // TODO: this renders hella ugly
-import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { Grid, List, NotFound } from "Library";
-import { type LoadPlayerType } from "Router";
+import type { LoadPlayerType } from "Router";
 
 const listItemProps = {
   sx: { textAlign: "center", justifyContent: "center", alignItems: "center" },

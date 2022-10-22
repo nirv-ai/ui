@@ -1,6 +1,6 @@
 // TODO: need to setup (i.e. read through docs) listItemAvatar, and Avatar from Mui
 
-import React from "react";
+import type { FC } from "react";
 import {
   List as MuiList,
   // Divider, // TODO: enable divider between list items
@@ -15,7 +15,7 @@ export interface ListInterface {
   listItemProps?: ListItemProps;
   listProps?: ListProps;
 }
-export const List: React.FC<ListInterface> = ({
+export const List: FC<ListInterface> = ({
   listData,
   listItemProps = {},
   listProps = {},
@@ -27,7 +27,7 @@ export const List: React.FC<ListInterface> = ({
     dataGroup.forEach((data, x) => {
       listItemGroups[i].push(
         <ListItem
-          key={`${data.key}-${i}-${x}`}
+          key={`${data.key ?? ""}-${i}-${x}`}
           data={data}
           listItemProps={listItemProps}
         />

@@ -1,9 +1,9 @@
-import React from "react";
+import type { FC } from "react";
 import { Unstable_Grid2 as MuiGrid, type Grid2Props } from "@mui/material"; // Grid version 2
 
-export interface GridInterface extends Grid2Props {}
+export type GridInterface = Grid2Props;
 
-export const Grid: React.FC<GridInterface> = ({
+export const Grid: FC<GridInterface> = ({
   children,
   component = "div",
   xs = 12,

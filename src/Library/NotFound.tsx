@@ -1,11 +1,10 @@
-import React from "react";
 import { useRouteError, useLoaderData } from "react-router-dom";
 
 import { Grid } from "Library";
 
 interface ErrorType {
-  statusText: String;
-  message: String;
+  statusText: string;
+  message: string;
 }
 
 export const NotFound = () => {

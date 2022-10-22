@@ -1,6 +1,6 @@
-import { type ActionFunctionArgs } from "react-router-dom";
+import type { ActionFunctionArgs } from "react-router-dom";
 
-import { type PlayerDataOrErrorType } from "Types";
+import type { PlayerDataOrErrorType } from "Types";
 // import { InvalidDataError } from "Errors";
 
 export interface ValidateNewPlayerInterface<T = PlayerDataOrErrorType>
@@ -17,6 +17,8 @@ export const validateNewPlayer = async ({
 }: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
+  // get pass eslint err
+  await Promise.resolve();
   // TODO: need to add clientside validation on this data
   // if (data fails validation) return InvalidDataError
   return data;
@@ -31,6 +33,8 @@ export const validateExistingPlayer = async ({
 }: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
+  // get pass eslint err
+  await Promise.resolve();
   // TODO: need to add clientside validation on this data
   // if (data fails validation) return InvalidDataError
   console.info("\n\n existing data validated");

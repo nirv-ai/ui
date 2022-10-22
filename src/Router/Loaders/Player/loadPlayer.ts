@@ -1,10 +1,6 @@
-import { type LoaderFunction } from "react-router-dom";
+import type { LoaderFunction } from "react-router-dom";
 
-import {
-  getPlayerStore,
-  playerDataConfig,
-  type PlayerDataInterface,
-} from "Data";
+import { getPlayerStore, type PlayerDataInterface } from "Data";
 import { PlayerDoesntExistError } from "Errors";
 
 export type LoadPlayerType =
@@ -19,7 +15,9 @@ export const loadPlayer: LoaderFunction = async ({
 }): Promise<LoadPlayerType> => {
   const playerStore = await getPlayerStore();
 
-  const player = playerStore(params.callsign);
+  const player = playerStore(params.callsign) as
+    | PlayerDataInterface
+    | undefined;
   if (player) return { player };
 
   return PlayerDoesntExistError();

@@ -1,11 +1,11 @@
-import React from "react";
+import type { FC } from "react";
 
 import { ListItemAvatar, type ListItemAvatarInterface } from "./ListItemAvatar";
 import { ListItemText, type ListItemTextInterface } from "./ListItemText";
 
 export type ListItemType = ListItemAvatarInterface | ListItemTextInterface;
 
-export const ListItem: React.FC<ListItemType> = ({ data, listItemProps }) => {
+export const ListItem: FC<ListItemType> = ({ data, listItemProps }) => {
   switch (data.type) {
     case "avatar":
       return <ListItemAvatar data={data} listItemProps={listItemProps} />;

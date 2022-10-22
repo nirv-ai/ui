@@ -1,5 +1,5 @@
-import { type DataConfigInterface } from "./DataConfig";
-import * as K from "./DataKeys";
+import type { DataConfigInterface } from "Data/Types";
+import * as K from "Data/DataKeys";
 
 export type AuthnzDataContextType = DataConfigInterface["context"] & {
   [K.PLAYER_KEY]: string;

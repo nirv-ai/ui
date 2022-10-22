@@ -1,9 +1,9 @@
-import React from "react";
+import type { FC } from "react";
 import { Stack as MuiStack, type StackProps } from "@mui/material";
 
-export interface StackInterface extends StackProps {}
+export type StackInterface = StackProps;
 
-export const Stack: React.FC<StackInterface> = ({
+export const Stack: FC<StackInterface> = ({
   children,
   spacing = 2,
   ...props

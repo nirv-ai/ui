@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Grid, H2, P } from "Library";
 
 export const SkillsAbout = () => (

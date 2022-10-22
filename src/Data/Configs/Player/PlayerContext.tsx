@@ -1,12 +1,13 @@
-import React from "react";
+import * as React from "react";
 
 import {
   playerDataConfig,
   type PlayerDataConfigInterface,
 } from "./PlayerDataConfig";
+import { PLAYER_CONTEXT_NAME } from "Data/DataKeys";
 
 export const PlayerContext = React.createContext(playerDataConfig.context);
-PlayerContext.displayName = playerDataConfig.context.contextName;
+PlayerContext.displayName = PLAYER_CONTEXT_NAME;
 
 export interface PlayerContextProviderInterface {
   children: React.ReactNode;

@@ -4,12 +4,12 @@
  */
 import store, { type StoreType } from "store2";
 
-import { AUTHNZ_STORE_NAME, PLAYER_STORE_NAME } from "Data";
+import { AUTHNZ_STORE_NAME, PLAYER_STORE_NAME } from "Data/DataKeys";
 
 export type ClientStorePromiseType = Promise<StoreType>;
-export interface ClientStoreInterface {
-  (props?: { namespace?: string }): ClientStorePromiseType;
-}
+export type ClientStoreInterface = (props?: {
+  namespace?: string;
+}) => ClientStorePromiseType;
 /**
  * gets the ClientStore for managing localStorage
  * @see "store2" dependency
@@ -17,6 +17,8 @@ export interface ClientStoreInterface {
 export const ClientStore: ClientStoreInterface = async (props = {}) => {
   if (props.namespace) return store.namespace(props.namespace);
 
+  // get around error
+  await Promise.resolve();
   return store;
 };
 

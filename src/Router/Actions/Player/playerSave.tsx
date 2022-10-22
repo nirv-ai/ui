@@ -1,7 +1,12 @@
-import { type ActionFunctionArgs } from "react-router-dom";
+import type { ActionFunctionArgs } from "react-router-dom";
 
-import { getPlayerStore, getAuthnzStore, PLAYER_KEY } from "Data";
-import { PlayerDataOrErrorType } from "Types";
+import {
+  getPlayerStore,
+  getAuthnzStore,
+  PLAYER_KEY,
+  type PlayerDataInterface,
+} from "Data";
+import type { PlayerDataOrErrorType } from "Types";
 import { InvalidDataError } from "Errors";
 
 export interface SavePlayerInterface {
@@ -24,7 +29,7 @@ export const saveNewPlayer = async ({
 
   const playerStore = await getPlayerStore();
 
-  const player = playerStore(data.callsign);
+  const player = playerStore(data.callsign) as PlayerDataInterface | undefined;
 
   // user already exists
   if (player) return InvalidDataError();
