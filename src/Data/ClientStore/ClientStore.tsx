@@ -4,7 +4,7 @@
  */
 import store, { type StoreType } from "store2";
 
-import { playerDataConfig, authnzDataConfig } from "Data";
+import { AUTHNZ_STORE_NAME, PLAYER_STORE_NAME } from "Data";
 
 export type ClientStorePromiseType = Promise<StoreType>;
 export interface ClientStoreInterface {
@@ -25,15 +25,11 @@ export const ClientStore: ClientStoreInterface = async (props = {}) => {
  * @see ClientStore fn
  */
 export const getPlayerStore = async (): ClientStorePromiseType =>
-  ClientStore({
-    namespace: playerDataConfig.store.storeName,
-  });
+  ClientStore({ namespace: PLAYER_STORE_NAME });
 
 /**
  * returns a ClientStore namespaced to authnzDataConfig.store.storeName
  * @see ClientStore fn
  */
 export const getAuthnzStore = async () =>
-  ClientStore({
-    namespace: authnzDataConfig.store.storeName,
-  });
+  ClientStore({ namespace: AUTHNZ_STORE_NAME });

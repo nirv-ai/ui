@@ -9,7 +9,7 @@ export interface ValidateNewPlayerInterface<T = PlayerDataOrErrorType>
 }
 
 /**
- * clientside player data validation, e.g. when a submitted when a player joins nirv.ai
+ * clientside player data validation, e.g. when a player joins nirv.ai
  */
 export const validateNewPlayer = async ({
   data,
@@ -17,8 +17,22 @@ export const validateNewPlayer = async ({
 }: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
-  // TODO: need to run clientside validation on this data before checking here
+  // TODO: need to add clientside validation on this data
   // if (data fails validation) return InvalidDataError
-  console.info("\n\n player data validated");
+  return data;
+};
+
+/**
+ * clientside player data validation, e.g. when a player logins
+ */
+export const validateExistingPlayer = async ({
+  data,
+  ...args
+}: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
+  if (data instanceof Error) return data;
+
+  // TODO: need to add clientside validation on this data
+  // if (data fails validation) return InvalidDataError
+  console.info("\n\n existing data validated");
   return data;
 };

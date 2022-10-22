@@ -9,6 +9,7 @@ import {
 
 export interface StoreManagerInterface {
   ClientStore: ClientStoreInterface;
+  ClientStoreClear: () => void;
   getAuthnzStore: typeof getAuthnzStore;
   getPlayerStore: typeof getPlayerStore;
   store: StoreType;
@@ -19,6 +20,7 @@ export interface StoreManagerInterface {
  */
 export const StoreManager: StoreManagerInterface = {
   ClientStore,
+  ClientStoreClear: () => store(false),
   getAuthnzStore,
   getPlayerStore,
   store,

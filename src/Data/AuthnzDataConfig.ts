@@ -12,11 +12,11 @@ export interface AuthnzDataConfigInterface extends DataConfigInterface {
 // authentication & authorization data,
 export const authnzDataConfig: AuthnzDataConfigInterface = {
   context: {
-    contextName: "AUTHNZ_CONTEXT",
+    contextName: K.AUTHNZ_CONTEXT_NAME,
     [K.PLAYER_KEY]: "",
   },
   store: {
-    storeName: "AUTHNZ_STORE",
+    storeName: K.AUTHNZ_STORE_NAME,
   },
 };
 
