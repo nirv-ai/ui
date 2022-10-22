@@ -22,7 +22,7 @@ export interface PlayerDataConfigInterface extends DataConfigInterface {
 
 export const playerDataConfig: PlayerDataConfigInterface = {
   context: {
-    contextName: "PLAYER_CONTEXT",
+    contextName: K.PLAYER_CONTEXT_NAME,
     [K.PLAYER_KEY]: {
       email: "",
       about: "",
@@ -34,7 +34,7 @@ export const playerDataConfig: PlayerDataConfigInterface = {
     },
   },
   store: {
-    storeName: "PLAYERS_STORE",
+    storeName: K.PLAYER_STORE_NAME,
   },
 };
 

@@ -13,7 +13,7 @@ import {
 // TODO: setup icons in library
 import MenuIcon from "@mui/icons-material/Menu";
 
-import { TextBold, Avatar, Button } from "Library";
+import { TextBold, Avatar, ButtonLogout } from "Library";
 
 export interface AppHeaderPlayerNavInterface {
   callsign: string;
@@ -125,7 +125,7 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <TextBold textAlign="center">logout</TextBold>
+                <ButtonLogout />
               </MenuItem>
             </Menu>
           </Box>

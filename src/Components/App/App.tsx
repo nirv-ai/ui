@@ -7,11 +7,15 @@ import { AppHeader } from "Components";
 import { Theme } from "Theme";
 
 import {
+  AUTHNZ_CONTEXT_NAME,
+  AUTHNZ_STORE_NAME,
   AuthnzContextProvider,
   authnzDataConfig,
   ContextManager,
   ContextUpdaterProvider,
+  PLAYER_CONTEXT_NAME,
   PLAYER_KEY,
+  PLAYER_STORE_NAME,
   PlayerContextProvider,
   playerDataConfig,
   setStoreManagerOnWindow,
@@ -22,8 +26,8 @@ import {
 } from "Data";
 
 export type AppStateType = {
-  playerContext: PlayerDataConfigInterface["context"];
-  authnzContext: AuthnzDataConfigInterface["context"];
+  [PLAYER_CONTEXT_NAME]: PlayerDataConfigInterface["context"];
+  [AUTHNZ_CONTEXT_NAME]: AuthnzDataConfigInterface["context"];
   [x: string]: any;
 };
 
@@ -34,7 +38,9 @@ export interface AppStateContextInterface
 // hook for components rendered via Outlet to access app state & context
 // FYI: you can split this up tremendously to provide it piecemiel to components
 // ^ instead of sending the whole thing
-export const useAppContent = () => useOutletContext<AppStateContextInterface>();
+export const useAppContext = () => {
+  useOutletContext<AppStateContextInterface>();
+};
 
 // TODO: add context updator functions to state and pass them into context
 export class App extends React.Component<{}, AppStateType> {
@@ -47,18 +53,19 @@ export class App extends React.Component<{}, AppStateType> {
     // enables syncing context & state
     // so nested comonents can update context via state
     this.updateContext = (contextName, next) => {
-      this.setState((prev: AppStateType) => ({
+      console.info("\n\n updating context", contextName, next);
+      this.setState((prevState: AppStateType, prevProps) => ({
         [contextName]: {
-          ...prev[contextName],
+          ...prevState[contextName],
           ...next,
         },
       }));
     };
 
     const playerStoreData =
-      StoreManager.store.namespace(playerDataConfig.store.storeName)() || {};
+      StoreManager.store.namespace(PLAYER_STORE_NAME)() || {};
     const authnzStoreData =
-      StoreManager.store.namespace(authnzDataConfig.store.storeName)() || {};
+      StoreManager.store.namespace(AUTHNZ_STORE_NAME)() || {};
 
     const authnzContext = { ...authnzDataConfig.context, ...authnzStoreData };
     const playerContext = { ...playerDataConfig.context };
@@ -72,13 +79,23 @@ export class App extends React.Component<{}, AppStateType> {
         ...ContextManager,
         updateContext: this.updateContext,
       },
-      playerContext,
-      authnzContext,
+      [PLAYER_CONTEXT_NAME]: playerContext,
+      [AUTHNZ_CONTEXT_NAME]: authnzContext,
     };
+
+    console.info("\n\n state set", this.state);
   }
 
   componentDidMount(): void {
     setStoreManagerOnWindow();
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<{}>,
+    prevState: Readonly<AppStateType>,
+    snapshot?: any
+  ): void {
+    console.info("\n\n app updated", this.state);
   }
 
   render() {
@@ -89,8 +106,12 @@ export class App extends React.Component<{}, AppStateType> {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container component="section">
               <ContextUpdaterProvider context={this.state.ContextManager}>
-                <AuthnzContextProvider context={this.state.authnzContext}>
-                  <PlayerContextProvider context={this.state.playerContext}>
+                <AuthnzContextProvider
+                  context={this.state[AUTHNZ_CONTEXT_NAME]}
+                >
+                  <PlayerContextProvider
+                    context={this.state[PLAYER_CONTEXT_NAME]}
+                  >
                     <AppHeader />
                   </PlayerContextProvider>
                   <Container>

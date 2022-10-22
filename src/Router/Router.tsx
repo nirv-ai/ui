@@ -39,6 +39,11 @@ const router = createBrowserRouter([
             action: ActionPipeline,
           },
           {
+            path: "logout/player", // login
+            // element: <PlayerPlayScreen />,
+            action: ActionPipeline,
+          },
+          {
             path: "learn", // all about NIRV.ai
             element: <LearnScreen />,
           },

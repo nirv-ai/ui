@@ -1,10 +1,9 @@
 import { type ActionFunction } from "react-router-dom";
 
 import {
-  authnzDataConfig,
-  ClientStore,
+  getPlayerStore,
+  getAuthnzStore,
   FormDataManager,
-  playerDataConfig,
   PLAYER_KEY,
   type PlayerDataInterface,
 } from "Data";
@@ -20,19 +19,15 @@ export const validatePlayerPlayForm: ActionFunction = async ({
 
   // TODO: this should be a request to the bff
   // TODO: the bff will never return the password
-  const playerStore = await ClientStore({
-    namespace: playerDataConfig.store.storeName,
-  });
+  const playerStore = await getPlayerStore();
   const player = playerStore(formData.callsign) as PlayerDataInterface;
 
   // user doesnt exist
   if (!player) return InvalidDataError();
 
   // TODO: this should save a server side JWT
-  const authStore = await ClientStore({
-    namespace: authnzDataConfig.store.storeName,
-  });
-  authStore(PLAYER_KEY, player.callsign);
+  const authnzStore = await getAuthnzStore();
+  authnzStore(PLAYER_KEY, player.callsign);
 
   return player;
 };

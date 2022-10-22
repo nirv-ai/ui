@@ -29,15 +29,13 @@ export const ActionPipeline: ActionFunction = async ({ request, params }) => {
         params,
       });
 
-      console.info("\n\n got response", playerSaved);
-
       return playerSaved;
     }
     case A.PLAYER_PLAY: {
       return console.info("\n\n got player play", formData);
     }
     case A.PLAYER_LOGOUT: {
-      return console.info("\n\n got player logout", formData);
+      return playerActions.logoutPlayer({ request, params });
     }
     case A.PLAYER_EDIT: {
       return console.info("\n\n got player logout", formData);
