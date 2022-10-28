@@ -3,7 +3,7 @@ import type { ActionFunctionArgs } from "react-router-dom";
 import type { PlayerDataOrErrorType } from "Types";
 // import { InvalidDataError } from "Errors";
 
-export interface ValidateNewPlayerInterface<T = PlayerDataOrErrorType>
+export interface ValidatePlayerInterface<T = PlayerDataOrErrorType>
   extends ActionFunctionArgs {
   data: T;
 }
@@ -14,7 +14,7 @@ export interface ValidateNewPlayerInterface<T = PlayerDataOrErrorType>
 export const validateNewPlayer = async ({
   data,
   ...args
-}: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
+}: ValidatePlayerInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
   // get pass eslint err
@@ -30,7 +30,7 @@ export const validateNewPlayer = async ({
 export const validateExistingPlayer = async ({
   data,
   ...args
-}: ValidateNewPlayerInterface): Promise<PlayerDataOrErrorType> => {
+}: ValidatePlayerInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
   // get pass eslint err

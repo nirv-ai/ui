@@ -1,13 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { TextField, Stack, Button, ActionField } from "Library";
 import { PLAYER_PLAY, type ValidatePlayerPlayFormType } from "Router";
+import {
+  ContextUpdaterContext,
+  PLAYER_KEY,
+  AUTHNZ_CONTEXT_NAME,
+  PLAYER_CONTEXT_NAME,
+} from "Data";
 
 export const PlayerPlayForm = () => {
   const response = useActionData() as ValidatePlayerPlayFormType | undefined;
   const navigate = useNavigate();
+  const { updateContext } = useContext(ContextUpdaterContext);
 
   useEffect(() => {
     if (!response) return void 0;
@@ -17,9 +24,13 @@ export const PlayerPlayForm = () => {
       return console.error(response);
     }
 
-    // TODO: update context with player and authnz
+    console.info("\n\n player logged in, navigating to player detail");
+
+    updateContext(PLAYER_CONTEXT_NAME, response);
+    updateContext(AUTHNZ_CONTEXT_NAME, { [PLAYER_KEY]: response.callsign });
+
     navigate(`/player/${response.callsign}`);
-  }, [response, navigate]);
+  }, [response, navigate, updateContext]);
 
   return (
     <Box mt="2rem">
