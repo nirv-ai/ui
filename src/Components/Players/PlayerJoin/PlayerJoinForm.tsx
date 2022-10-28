@@ -25,7 +25,6 @@ export const PlayerJoinForm = () => {
       return console.error(response);
     }
 
-    // TODO: update context with player and authnz
     console.info("\n\n player joned, navigating to player detail");
 
     updateContext(PLAYER_CONTEXT_NAME, response);

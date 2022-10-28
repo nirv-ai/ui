@@ -23,16 +23,33 @@ export const ActionPipeline: ActionFunction = async ({ request, params }) => {
         params,
       });
 
-      const playerSaved = await playerActions.saveNewPlayer({
+      const newPlayerData = await playerActions.saveNewPlayer({
         data: playerValidated,
         request,
         params,
       });
 
-      return playerSaved;
+      return newPlayerData;
     }
     case A.PLAYER_PLAY: {
-      return console.info("\n\n got player play", formData);
+      const { ACTION_TYPE, ...data } = formData as unknown as ACTION_TYPE &
+        PlayerDataInterface;
+
+      const playerValidated = await playerActions.validateExistingPlayer({
+        data,
+        request,
+        params,
+      });
+
+      const existingPlayer = await playerActions.loginPlayer({
+        data: playerValidated,
+        request,
+        params,
+      });
+
+      console.info("\n\n got existing player", existingPlayer);
+
+      return existingPlayer;
     }
     case A.PLAYER_LOGOUT: {
       return playerActions.logoutPlayer({ request, params }) as unknown;
