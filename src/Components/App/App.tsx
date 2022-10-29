@@ -1,11 +1,12 @@
 import { Component } from "react";
-import { Box, Container, CssBaseline, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import { Outlet, useOutletContext } from "react-router-dom";
 
-import { Grid } from "Library";
 import { AppHeader } from "Components";
 import { Theme } from "Theme";
 
+// TODO: add path context
+// ^ then you should be able to work on loadPath loader
 import {
   AUTHNZ_CONTEXT_NAME,
   AUTHNZ_STORE_NAME,
@@ -13,6 +14,9 @@ import {
   authnzDataConfig,
   ContextUpdaterBase,
   ContextUpdaterProvider,
+  PATH_CONTEXT_NAME,
+  PATH_STORE_NAME,
+  pathDataConfig,
   PLAYER_CONTEXT_NAME,
   PLAYER_KEY,
   PLAYER_STORE_NAME,
@@ -22,6 +26,7 @@ import {
   StoreManager,
   type AuthnzDataConfigInterface,
   type ContextUpdaterInterface,
+  type PathDataConfigInterface,
   type PlayerDataConfigInterface,
   type PlayerDataInterface,
 } from "Data";
@@ -29,6 +34,7 @@ import {
 export interface AppContextInterface {
   [PLAYER_CONTEXT_NAME]: PlayerDataConfigInterface["context"];
   [AUTHNZ_CONTEXT_NAME]: AuthnzDataConfigInterface["context"];
+  [PATH_CONTEXT_NAME]: PathDataConfigInterface["context"];
 }
 export interface AppStateType extends AppContextInterface {
   ContextManager: {
@@ -72,9 +78,11 @@ export class App extends Component<AppProps, AppStateType> {
       StoreManager.store.namespace(PLAYER_STORE_NAME)() || {};
     const authnzStoreData =
       StoreManager.store.namespace(AUTHNZ_STORE_NAME)() || {};
+    const pathStoreData = StoreManager.store.namespace(PATH_STORE_NAME)() || {};
 
     const authnzContext = { ...authnzDataConfig.context, ...authnzStoreData };
-    const playerContext = { ...playerDataConfig.context };
+    const playerContext = { ...playerDataConfig.context, ...playerStoreData };
+    const pathContext = { ...pathDataConfig.context, ...pathStoreData };
 
     if (authnzStoreData[PLAYER_KEY]) {
       playerContext[PLAYER_KEY] = playerStoreData[
@@ -89,6 +97,7 @@ export class App extends Component<AppProps, AppStateType> {
       },
       [PLAYER_CONTEXT_NAME]: playerContext,
       [AUTHNZ_CONTEXT_NAME]: authnzContext,
+      [PATH_CONTEXT_NAME]: pathContext,
     };
 
     console.info("\n\n state set", this.state);
@@ -110,32 +119,23 @@ export class App extends Component<AppProps, AppStateType> {
     return (
       <ThemeProvider theme={Theme}>
         <CssBaseline />
-        <Container disableGutters>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container component="section">
-              <ContextUpdaterProvider context={this.state.ContextManager}>
-                <AuthnzContextProvider
-                  context={this.state[AUTHNZ_CONTEXT_NAME]}
-                >
-                  <PlayerContextProvider
-                    context={this.state[PLAYER_CONTEXT_NAME]}
-                  >
-                    <AppHeader />
-                  </PlayerContextProvider>
-                  <Container>
-                    <Outlet
-                      context={{
-                        updateContext: this.updateContext,
-                        authnzContext: this.state[AUTHNZ_CONTEXT_NAME],
-                        playerContext: this.state[PLAYER_CONTEXT_NAME],
-                      }}
-                    />
-                  </Container>
-                </AuthnzContextProvider>
-              </ContextUpdaterProvider>
-            </Grid>
-          </Box>
-        </Container>
+        <ContextUpdaterProvider context={this.state.ContextManager}>
+          <AuthnzContextProvider context={this.state[AUTHNZ_CONTEXT_NAME]}>
+            <PlayerContextProvider context={this.state[PLAYER_CONTEXT_NAME]}>
+              <AppHeader />
+            </PlayerContextProvider>
+            <Container>
+              <Outlet
+                context={{
+                  updateContext: this.updateContext,
+                  authnzContext: this.state[AUTHNZ_CONTEXT_NAME],
+                  playerContext: this.state[PLAYER_CONTEXT_NAME],
+                  pathContext: this.state[PATH_CONTEXT_NAME],
+                }}
+              />
+            </Container>
+          </AuthnzContextProvider>
+        </ContextUpdaterProvider>
       </ThemeProvider>
     );
   }

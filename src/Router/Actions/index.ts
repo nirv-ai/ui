@@ -1,5 +1,5 @@
 export * as ActionTypes from "./ActionTypes";
-export * as playerActions from "./Player";
+export * as playerActions from "./Players";
 export * from "./ActionPipeline";
 export * from "./ActionTypes";
-export * from "./Player";
+export * from "./Players";

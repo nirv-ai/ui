@@ -5,7 +5,7 @@ import type { FC } from "react";
 import { Grid, H2, P, type GridInterface } from "Library";
 
 export const PathsScreen: FC<GridInterface> = (props) => (
-  <Grid component="article" {...props}>
+  <Grid container component="article" {...props}>
     <H2>PATHS</H2>
     <P>data table of top paths</P>
   </Grid>

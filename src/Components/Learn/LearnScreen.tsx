@@ -8,8 +8,8 @@ import {
 } from "Components";
 
 export const LearnScreen = () => (
-  <Grid component="main">
-    <PathsAbout mt="2rem" />
+  <Grid component="main" pt="2rem">
+    <PathsAbout />
     <ActivitiesAbout />
     <ActionsAbout />
     <SkillsAbout />

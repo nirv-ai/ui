@@ -40,7 +40,7 @@ export const PlayerProfileScreen = () => {
   };
 
   return (
-    <Grid component="article" id="player-details">
+    <Grid container component="article" id="player-details" pt="2rem">
       {renderPlayer()}
     </Grid>
   );

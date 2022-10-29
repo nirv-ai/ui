@@ -4,20 +4,30 @@
 export const PLAYER_KEY = "THIS_PLAYER";
 
 /**
- * name of the player context
+ * key to access player context
  */
 export const PLAYER_CONTEXT_NAME = "PLAYER_CONTEXT";
 
 /**
- * name of hte player store
+ * key to access player in store
  */
 export const PLAYER_STORE_NAME = "PLAYERS_STORE";
 /**
- * name of the authnz context
+ * key to access authnz in context
  */
 export const AUTHNZ_CONTEXT_NAME = "AUTHNZ_CONTEXT";
 
 /**
- * name of the authnz store
+ * key to access authnz in store
  */
 export const AUTHNZ_STORE_NAME = "AUTHNZ_STORE";
+
+/**
+ * key to access path in store
+ */
+export const PATH_STORE_NAME = "PATH_STORE";
+
+/**
+ * leu tp access path in context
+ */
+export const PATH_CONTEXT_NAME = "PATH_CONTEXT";

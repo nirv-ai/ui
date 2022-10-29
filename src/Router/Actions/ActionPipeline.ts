@@ -1,9 +1,11 @@
+// TODO: implement pipelines with ramda do(this, this, thenthis)
+
 import type { ActionFunction } from "react-router-dom";
 
 import * as Errors from "Errors";
 import { FormDataManager, type PlayerDataInterface } from "Data";
 import * as A from "./ActionTypes";
-import * as playerActions from "./Player";
+import * as playerActions from "./Players";
 
 interface ACTION_TYPE {
   ACTION_TYPE: string;
