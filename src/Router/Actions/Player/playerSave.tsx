@@ -43,7 +43,7 @@ export const saveNewPlayer = async ({
 
     return savePlayer({ data: response.player, isNew: true });
   } catch (err) {
-    console.error("\n\n todo got error", err);
+    console.error("\n\n TODO: unhandled error", err);
 
     return InvalidDataError();
   }
