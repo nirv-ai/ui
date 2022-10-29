@@ -2,6 +2,8 @@
 // TODO: preventing rerenders with useMemo and useContext
 export * from "./Configs";
 export * from "./DataKeys";
+export * from "./Endpoints";
+export * from "./Endpoints";
 export * from "./Stores";
 export * from "./Types";
 export * from "./Utils";
