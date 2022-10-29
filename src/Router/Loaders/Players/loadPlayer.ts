@@ -19,9 +19,7 @@ export const loadPlayer: LoaderFunction = async ({
 
   try {
     const { data: response }: { data: { player: PlayerDataInterface } } =
-      await BFFEndpoint.post(PLAYERS_GET_ROUTE, {
-        callsign: params.callsign,
-      });
+      await BFFEndpoint.get(`${PLAYERS_GET_ROUTE}/${params.callsign!}`);
 
     playerStore(response.player.callsign, response.player);
 

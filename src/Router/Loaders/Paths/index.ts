@@ -3,3 +3,4 @@
 // ^ refactor all loaders to be route based
 // ^ that consume utility fns, e.g. in a switch(loader_type) => doThisOnMatch
 export * from "./loadPath";
+export * from "./loadPaths";

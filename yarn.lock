@@ -4233,7 +4233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.1.3":
+"axios@npm:1.1.3":
   version: 1.1.3
   resolution: "axios@npm:1.1.3"
   dependencies:
@@ -13020,7 +13020,7 @@ __metadata:
     "@types/react": 18.0.21
     "@types/react-dom": 18.0.6
     "@types/react-router-dom": 5.3.3
-    axios: ^1.1.3
+    axios: 1.1.3
     eslint-config-prettier: 8.5.0
     husky: 8.0.1
     lint-staged: 13.0.3

@@ -1,6 +1,6 @@
 import { Grid } from "Library";
 
-import { AppAbout } from ".";
+import { AppAbout } from "./AppAbout";
 
 export const AppLandingScreen = () => (
   <Grid container component="main">

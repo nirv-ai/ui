@@ -15,7 +15,7 @@ import {
   App,
 } from "Components";
 import { ActionPipeline } from "./Actions";
-import { playerLoaders } from "./Loaders";
+import { playerLoaders, pathLoaders } from "./Loaders";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
           // nirv objects related
           {
             path: "paths", // a players homepage
-            // loader: playerLoaders.loadPlayer,
+            loader: pathLoaders.loadPaths,
             element: <PathsScreen />,
           },
           {

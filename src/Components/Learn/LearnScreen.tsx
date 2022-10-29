@@ -8,7 +8,7 @@ import {
 } from "Components";
 
 export const LearnScreen = () => (
-  <Grid component="main" pt="2rem">
+  <Grid container component="main">
     <PathsAbout />
     <ActivitiesAbout />
     <ActionsAbout />

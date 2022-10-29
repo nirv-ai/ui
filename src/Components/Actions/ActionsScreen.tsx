@@ -5,7 +5,7 @@ import type { FC } from "react";
 import { Grid, H2, P, type GridInterface } from "Library";
 
 export const ActionsScreen: FC<GridInterface> = (props) => (
-  <Grid component="article" {...props}>
+  <Grid component="main" {...props}>
     <H2>ACTIONS</H2>
     <P>data table of top actions</P>
   </Grid>

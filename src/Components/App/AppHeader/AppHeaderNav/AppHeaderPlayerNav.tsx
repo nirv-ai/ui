@@ -58,8 +58,25 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
   const AppNavMenuItems = () => (
     <>
       {appNavMenuConfig.map((item) => (
-        <MenuItem key={item.href} onClick={handleCloseNavMenu}>
-          <Link href={item.href}>
+        <MenuItem
+          key={item.href}
+          onClick={handleCloseNavMenu}
+          sx={{
+            padding: 0,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            href={item.href}
+            sx={{
+              display: "block",
+              width: "100%",
+              textDecoration: "none",
+              padding: "0 20px",
+              textAlign: "left",
+            }}
+          >
             <TextBold fontSize="12px">{item.text ?? item.href}</TextBold>
           </Link>
         </MenuItem>
