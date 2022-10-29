@@ -76,6 +76,7 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
             >
+              {/* TODO: this entire thing should be a loop */}
               <MenuItem onClick={handleCloseNavMenu}>
                 <Link href={`player/${callsign}`}>
                   <TextBold fontSize="12px">profile</TextBold>
@@ -84,6 +85,26 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
               <MenuItem onClick={handleCloseNavMenu}>
                 <Link href="learn">
                   <TextBold fontSize="12px">learn</TextBold>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link href={`paths`}>
+                  <TextBold fontSize="12px">paths</TextBold>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link href={`activities`}>
+                  <TextBold fontSize="12px">activities</TextBold>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link href={`actions`}>
+                  <TextBold fontSize="12px">actions</TextBold>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link href={`skills`}>
+                  <TextBold fontSize="12px">skills</TextBold>
                 </Link>
               </MenuItem>
             </Menu>
