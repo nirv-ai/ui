@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "react-router-dom";
 
-import { BFFEndpoint } from "Data";
+import { BFFEndpoint, PLAYERS_GET_ROUTE } from "Data";
 import { getPlayerStore, type PlayerDataInterface } from "Data";
 import { PlayerDoesntExistError } from "Errors";
 
@@ -19,7 +19,7 @@ export const loadPlayer: LoaderFunction = async ({
 
   try {
     const { data: response }: { data: { player: PlayerDataInterface } } =
-      await BFFEndpoint.post("/v1/player", {
+      await BFFEndpoint.post(PLAYERS_GET_ROUTE, {
         callsign: params.callsign,
       });
 

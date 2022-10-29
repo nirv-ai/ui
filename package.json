@@ -37,7 +37,7 @@
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{jsx,ts,tsx}": [
       "eslint --fix 'src/**"
     ],
     "*.{js,jsx,ts,tsx,json,css,scss,md}": [

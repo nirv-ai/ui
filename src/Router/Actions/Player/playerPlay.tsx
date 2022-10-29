@@ -5,6 +5,7 @@ import {
   PLAYER_KEY,
   getPlayerStore,
   BFFEndpoint,
+  PLAYERS_PLAY_ROUTE,
   type PlayerDataInterface,
 } from "Data";
 import { InvalidDataError } from "Errors";
@@ -24,7 +25,7 @@ export const loginPlayer = async ({
   try {
     // BFF returns player if valid data
     const { data: response }: { data: { player: PlayerDataInterface } } =
-      await BFFEndpoint.post("/v1/player/play", data);
+      await BFFEndpoint.post(PLAYERS_PLAY_ROUTE, data);
 
     // save player to localstorage
     const playerStore = await getPlayerStore();

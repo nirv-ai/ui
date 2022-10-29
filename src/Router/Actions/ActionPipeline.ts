@@ -47,8 +47,6 @@ export const ActionPipeline: ActionFunction = async ({ request, params }) => {
         params,
       });
 
-      console.info("\n\n got existing player", existingPlayer);
-
       return existingPlayer;
     }
     case A.PLAYER_LOGOUT: {

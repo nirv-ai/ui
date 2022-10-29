@@ -7,13 +7,14 @@ import {
   getAuthnzStore,
   PLAYER_KEY,
   BFFEndpoint,
+  PLAYERS_JOIN_ROUTE,
   type PlayerDataInterface,
 } from "Data";
 import type { PlayerDataOrErrorType } from "Types";
 import { InvalidDataError } from "Errors";
 
 export interface SavePlayerInterface {
-  data: PlayerDataInterface;
+  data: PlayerDataOrErrorType;
   isNew?: boolean;
 }
 
@@ -39,7 +40,7 @@ export const saveNewPlayer = async ({
 
   try {
     const { data: response }: { data: { player: PlayerDataInterface } } =
-      await BFFEndpoint.post("/v1/player/join", data);
+      await BFFEndpoint.post(PLAYERS_JOIN_ROUTE, data);
 
     return savePlayer({ data: response.player, isNew: true });
   } catch (err) {

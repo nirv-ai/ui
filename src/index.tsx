@@ -13,6 +13,7 @@
 // TODO: BFF returns 400 on bad data, show these errors next to the fields in the form
 // TODO: avatar img in app header doesnt show after login
 // TODO: axios throws response.code === "ERR_NETWORK" if unable to reach e.g. BFF service
+// TODO: if a user is logged in, but that user doesnt exist, log the player out
 
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";

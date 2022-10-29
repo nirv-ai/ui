@@ -39,6 +39,6 @@
     "types": ["react", "node", "react-dom", "ramda", "react-router-dom"],
     "useUnknownInCatchVariables": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "prev"],
   "exclude": ["**/node_modules", "**/.*/"]
 }
