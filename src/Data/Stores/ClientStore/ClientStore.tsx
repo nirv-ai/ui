@@ -4,7 +4,11 @@
  */
 import store, { type StoreType } from "store2";
 
-import { AUTHNZ_STORE_NAME, PLAYER_STORE_NAME } from "Data/DataKeys";
+import {
+  AUTHNZ_STORE_NAME,
+  PLAYER_STORE_NAME,
+  PATH_STORE_NAME,
+} from "Data/DataKeys";
 
 export type ClientStorePromiseType = Promise<StoreType>;
 export type ClientStoreInterface = (props?: {
@@ -35,3 +39,10 @@ export const getPlayerStore = async (): ClientStorePromiseType =>
  */
 export const getAuthnzStore = async () =>
   ClientStore({ namespace: AUTHNZ_STORE_NAME });
+
+/**
+ * returns a ClientStore namespaced to pathDataConfig.store.storeName
+ * @see ClientStore fn
+ */
+export const getPathStore = async (): ClientStorePromiseType =>
+  ClientStore({ namespace: PATH_STORE_NAME });

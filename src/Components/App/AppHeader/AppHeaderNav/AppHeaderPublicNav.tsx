@@ -5,6 +5,7 @@ import { Stack, TextBold } from "Library";
 const linkSx = { fontFamily: "monospace" };
 export const AppHeaderPublicNav = () => (
   <Stack
+    id="nirv-app-header"
     direction="row"
     justifyContent="center"
     alignItems="center"

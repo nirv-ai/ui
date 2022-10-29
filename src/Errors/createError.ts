@@ -17,3 +17,9 @@ export const InvalidDataError = () => BaseError("INVALID_DATA");
  * @returns BaseError
  */
 export const PlayerDoesntExistError = () => BaseError("PLAYER_DOESNT_EXIST");
+
+/**
+ * cant find a PATH
+ * @returns BaseError
+ */
+export const PathDoesntExistError = () => BaseError("PATH_DOESNT_EXIST");

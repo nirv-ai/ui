@@ -4,11 +4,11 @@ import {
   Toolbar,
   IconButton, // TODO: move IconButton to library
   Menu,
-  Container,
   Tooltip,
   MenuItem,
   Box,
   Link,
+  Grid,
 } from "@mui/material";
 // TODO: setup icons in library
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,37 +24,59 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
   callsign,
   avatar,
 }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [AppNavMenuAnchor, setAppNavMenuAnchor] =
+    React.useState<null | HTMLElement>(null);
+  const [PlayerSettingsMenuAnchor, setPlayerSettingsMenuAnchor] =
+    React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+    setAppNavMenuAnchor(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+  const handleOpenPlayerSettingsMenu = (
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    setPlayerSettingsMenuAnchor(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAppNavMenuAnchor(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleClosePlayerSettingsMenu = () => {
+    setPlayerSettingsMenuAnchor(null);
   };
+
+  const appNavMenuConfig = [
+    { href: `player/${callsign}`, text: "profile" },
+    { href: "learn" },
+    { href: "paths" },
+    { href: "activities" },
+    { href: "actions" },
+    { href: "skills" },
+  ];
+
+  const AppNavMenuItems = () => (
+    <>
+      {appNavMenuConfig.map((item) => (
+        <MenuItem key={item.href} onClick={handleCloseNavMenu}>
+          <Link href={item.href}>
+            <TextBold fontSize="12px">{item.text ?? item.href}</TextBold>
+          </Link>
+        </MenuItem>
+      ))}
+    </>
+  );
 
   return (
-    <AppBar position="static">
-      <Container>
-        <Toolbar disableGutters>
-          <Box display="flex" sx={{ flexGrow: 1 }}>
+    <Grid flexDirection="row" sx={{ width: "100%" }}>
+      <AppBar component="header" id="player-app-nav" position="static">
+        <Toolbar id="app-header-toolbar" sx={{ alignItems: "center" }}>
+          {/* the left hamburger menu */}
+          <Box sx={{ display: "flex", flexGrow: 0 }} id="app-header-navigation">
             <IconButton
               size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
+              aria-label="app navigation"
+              aria-controls="app-nav-menu"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
@@ -62,58 +84,30 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
+              id="app-nav-menu"
+              anchorEl={AppNavMenuAnchor}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "right",
               }}
-              open={Boolean(anchorElNav)}
+              open={Boolean(AppNavMenuAnchor)}
               onClose={handleCloseNavMenu}
             >
-              {/* TODO: this entire thing should be a loop */}
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href={`player/${callsign}`}>
-                  <TextBold fontSize="12px">profile</TextBold>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href="learn">
-                  <TextBold fontSize="12px">learn</TextBold>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href={`paths`}>
-                  <TextBold fontSize="12px">paths</TextBold>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href={`activities`}>
-                  <TextBold fontSize="12px">activities</TextBold>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href={`actions`}>
-                  <TextBold fontSize="12px">actions</TextBold>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link href={`skills`}>
-                  <TextBold fontSize="12px">skills</TextBold>
-                </Link>
-              </MenuItem>
+              <AppNavMenuItems />
             </Menu>
           </Box>
+
+          {/* this is the nirvai text in the center */}
           <TextBold
-            noWrap
-            display="flex"
             sx={{
-              mr: 2,
+              display: "flex",
+              marginBottom: 0,
+              justifyContent: "center",
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
@@ -123,35 +117,38 @@ export const AppHeaderPlayerNav: React.FC<AppHeaderPlayerNavInterface> = ({
             NIRV.ai
           </TextBold>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={`${callsign}'s avatar`} src={avatar} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <ButtonLogout />
-              </MenuItem>
-            </Menu>
-          </Box>
+          {/*
+              player settings menu
+              DO NOT Move to a function
+              it fks up the placement of the popup
+          */}
+
+          <Tooltip title="Open Player Settings">
+            <IconButton onClick={handleOpenPlayerSettingsMenu} sx={{ p: 0 }}>
+              <Avatar alt={`${callsign}'s avatar`} src={avatar} />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            id="player-settings-menu"
+            anchorEl={PlayerSettingsMenuAnchor}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            open={Boolean(PlayerSettingsMenuAnchor)}
+            onClose={handleClosePlayerSettingsMenu}
+          >
+            <MenuItem onClick={handleClosePlayerSettingsMenu}>
+              <ButtonLogout />
+            </MenuItem>
+          </Menu>
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
+    </Grid>
   );
 };

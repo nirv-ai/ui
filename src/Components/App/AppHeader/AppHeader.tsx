@@ -3,7 +3,7 @@
  */
 import { useContext } from "react";
 
-import { Grid } from "Library";
+import { Stack } from "Library";
 import { AppHeaderLogoHuge } from "./AppHeaderLogo";
 import { AppHeaderNav } from "./AppHeaderNav";
 import { AuthnzContext, PlayerContext } from "Data";
@@ -13,12 +13,14 @@ export const AppHeader = () => {
   const playerData = useContext(PlayerContext);
 
   return (
-    <Grid component="header" flexDirection="column" display="flex" mt="0">
-      <AppHeaderLogoHuge shouldRender={!authData.THIS_PLAYER} />
-      <AppHeaderNav
-        callsign={authData.THIS_PLAYER}
-        avatar={playerData.THIS_PLAYER.avatar}
-      />
-    </Grid>
+    <header id="app-header">
+      <Stack>
+        <AppHeaderLogoHuge shouldRender={!authData.THIS_PLAYER} />
+        <AppHeaderNav
+          callsign={authData.THIS_PLAYER}
+          avatar={playerData.THIS_PLAYER.avatar}
+        />
+      </Stack>
+    </header>
   );
 };

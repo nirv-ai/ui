@@ -4,6 +4,7 @@ import {
   ClientStore,
   getAuthnzStore,
   getPlayerStore,
+  getPathStore,
   type ClientStoreInterface,
 } from "./ClientStore";
 
@@ -13,6 +14,7 @@ export interface StoreManagerInterface {
   ClientStoreAll: () => void;
   getAuthnzStore: typeof getAuthnzStore;
   getPlayerStore: typeof getPlayerStore;
+  getPathStore: typeof getPathStore;
   store: StoreType;
 }
 /**
@@ -25,5 +27,6 @@ export const StoreManager: StoreManagerInterface = {
   ClientStoreAll: () => store(),
   getAuthnzStore,
   getPlayerStore,
+  getPathStore,
   store,
 };
