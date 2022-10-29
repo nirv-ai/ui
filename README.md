@@ -1,5 +1,9 @@
 # NIRV.ai UI
 
+## todo
+
+- add yarn add tslib and importHelpers: true to tsconfig.json
+
 ## scripts
 
 ### `yarn start`

@@ -8,6 +8,8 @@
 // check this: https://github.com/tsmodule/tsmodule#installation
 // TODO: read this https://github.com/microsoft/TypeScript/wiki/Performance#writing-easy-to-compile-code
 // TODO: https://github.com/microsoft/TypeScript-Handbook/blob/master/pages/tutorials/tsconfig.json.md#types-typeroots-and-types
+// TODO: add validator.js for all form validation
+
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
