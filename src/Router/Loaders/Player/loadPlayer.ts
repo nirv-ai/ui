@@ -1,5 +1,4 @@
 import type { LoaderFunction } from "react-router-dom";
-import type { AxiosResponse } from "axios";
 
 import { BFFEndpoint } from "Data";
 import { getPlayerStore, type PlayerDataInterface } from "Data";
@@ -19,14 +18,14 @@ export const loadPlayer: LoaderFunction = async ({
   const playerStore = await getPlayerStore();
 
   try {
-    const { data }: { data: { player: PlayerDataInterface } } =
+    const { data: response }: { data: { player: PlayerDataInterface } } =
       await BFFEndpoint.post("/v1/player", {
         callsign: params.callsign,
       });
 
-    playerStore(data.player.callsign, data.player);
+    playerStore(response.player.callsign, response.player);
 
-    return data;
+    return response;
   } catch (err) {
     const thisError = err as {
       response?: Record<string, string | number>;

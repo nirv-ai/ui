@@ -10,6 +10,9 @@
 // TODO: https://github.com/microsoft/TypeScript-Handbook/blob/master/pages/tutorials/tsconfig.json.md#types-typeroots-and-types
 // TODO: add validator.js for all form validation
 // TODO: setup service worker for offline responses from localstorage
+// TODO: BFF returns 400 on bad data, show these errors next to the fields in the form
+// TODO: avatar img in app header doesnt show after login
+// TODO: axios throws response.code === "ERR_NETWORK" if unable to reach e.g. BFF service
 
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
