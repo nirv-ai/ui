@@ -1,16 +1,19 @@
+// TODO: run clientside validation before saving
+
 import type { ActionFunctionArgs } from "react-router-dom";
 
 import {
   getPlayerStore,
   getAuthnzStore,
   PLAYER_KEY,
+  BFFEndpoint,
   type PlayerDataInterface,
 } from "Data";
 import type { PlayerDataOrErrorType } from "Types";
 import { InvalidDataError } from "Errors";
 
 export interface SavePlayerInterface {
-  data: PlayerDataOrErrorType;
+  data: PlayerDataInterface;
   isNew?: boolean;
 }
 
@@ -27,15 +30,23 @@ export const saveNewPlayer = async ({
 }: SavePlayerActionInterface): Promise<PlayerDataOrErrorType> => {
   if (data instanceof Error) return data;
 
+  // check if we already have user
   const playerStore = await getPlayerStore();
+  const playerInStore = playerStore(data.callsign) as
+    | PlayerDataInterface
+    | undefined;
+  if (playerInStore) return InvalidDataError();
 
-  const player = playerStore(data.callsign) as PlayerDataInterface | undefined;
+  try {
+    const { data: response }: { data: { player: PlayerDataInterface } } =
+      await BFFEndpoint.post("/v1/player/join", data);
 
-  // user already exists
-  if (player) return InvalidDataError();
+    return savePlayer({ data: response.player, isNew: true });
+  } catch (err) {
+    console.error("\n\n todo got error", err);
 
-  // TODO: run clientside validation before saving
-  return savePlayer({ data, isNew: true });
+    return InvalidDataError();
+  }
 };
 
 // TODO: finish this when starting edit action
