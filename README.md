@@ -63,6 +63,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [husky & lint staged](https://laurieontech.com/posts/husky/)
   - [TODO: setup image lint on lintstaged](https://github.com/okonet/lint-staged#minify-the-images)
 - [typescript eslint parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser#parseroptionsproject)
+- [axios](https://axios-http.com/docs/intro)
 
 ## FYI
 
