@@ -64,6 +64,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
   - [TODO: setup image lint on lintstaged](https://github.com/okonet/lint-staged#minify-the-images)
 - [typescript eslint parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser#parseroptionsproject)
 - [axios](https://axios-http.com/docs/intro)
+- [tanstack table](https://tanstack.com/table/v8)
+- [tanstack virtual](https://tanstack.com/virtual/v3/docs/guide/introduction)
+- [tanstack charts](https://react-charts.tanstack.com/docs/installation)
 
 ## FYI
 

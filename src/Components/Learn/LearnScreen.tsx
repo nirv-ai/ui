@@ -9,10 +9,12 @@ import {
 
 export const LearnScreen = () => (
   <Grid container component="main">
-    <PathsAbout />
-    <ActivitiesAbout />
-    <ActionsAbout />
-    <SkillsAbout />
-    <PlayersAbout />
+    <Grid>
+      <PathsAbout />
+      <ActivitiesAbout />
+      <ActionsAbout />
+      <SkillsAbout />
+      <PlayersAbout />
+    </Grid>
   </Grid>
 );

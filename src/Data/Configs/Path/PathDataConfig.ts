@@ -11,6 +11,8 @@ export interface PathDataInterface {
   strategy: string;
   child_paths: string;
   display_name: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export type PathDataContextType = DataConfigInterface["context"];

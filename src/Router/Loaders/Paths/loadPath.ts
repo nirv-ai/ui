@@ -22,8 +22,6 @@ export const loadPath: LoaderFunction = async ({
         `${PATHS_GET_ROUTE}/${params.pathName!.replace(/-/g, " ")}`
       );
 
-    console.info("\n\n got path", response.path);
-
     if (!response.path.name) return PathDoesntExistError();
 
     pathStore(PATH_KEY, response.path);

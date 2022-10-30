@@ -41,7 +41,7 @@ export const PlayerProfileScreen = () => {
 
   return (
     <Grid container component="main" id="player-details" pt="2rem">
-      {renderPlayer()}
+      <Grid>{renderPlayer()}</Grid>
     </Grid>
   );
 };

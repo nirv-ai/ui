@@ -8,8 +8,13 @@ import { Paths } from "./Paths";
 export const PathsScreen: FC<GridInterface> = (props) => {
   return (
     <Grid container component="main" {...props}>
-      <H2>PATHS</H2>
-      <Paths />
+      <Grid>
+        <H2>PATHS</H2>
+      </Grid>
+
+      <Grid>
+        <Paths />
+      </Grid>
     </Grid>
   );
 };

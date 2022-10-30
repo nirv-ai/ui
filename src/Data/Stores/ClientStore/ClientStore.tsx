@@ -1,6 +1,6 @@
 /**
- * TODO: move ClientStore into a separate file
- * ^ there will be a BackendStore, CacheStore, etc.
+ * generally client stores are only used to hydrate data from localstorage
+ * ^ after that, you should use react/react-router-dom context
  */
 import store, { type StoreType } from "store2";
 

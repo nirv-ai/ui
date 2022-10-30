@@ -36,6 +36,8 @@ export const saveNewPlayer = async ({
   const playerInStore = playerStore(data.callsign) as
     | PlayerDataInterface
     | undefined;
+
+  console.info("\n\n got player", playerInStore);
   if (playerInStore) return InvalidDataError();
 
   try {

@@ -3,8 +3,10 @@ import { PlayerPlayAbout } from "Components";
 import { PlayerPlayForm } from "./PlayerPlayForm";
 
 export const PlayerPlayScreen = () => (
-  <Grid component="article">
-    <PlayerPlayAbout mt="2rem" />
-    <PlayerPlayForm />
+  <Grid container component="article">
+    <Grid>
+      <PlayerPlayAbout mt="2rem" />
+      <PlayerPlayForm />
+    </Grid>
   </Grid>
 );
