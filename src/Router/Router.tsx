@@ -3,16 +3,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { NotFound } from "Library";
 
 import {
-  AppLandingScreen,
-  LearnScreen,
-  PlayerProfileScreen,
-  PlayerJoinScreen,
-  PlayerPlayScreen,
-  PathsScreen,
   ActionsScreen,
-  SkillsScreen,
   ActivitiesScreen,
   App,
+  AppLandingScreen,
+  LearnScreen,
+  PathScreen,
+  PathsScreen,
+  PlayerJoinScreen,
+  PlayerPlayScreen,
+  PlayerProfileScreen,
+  SkillsScreen,
 } from "Components";
 import { ActionPipeline } from "./Actions";
 import { playerLoaders, pathLoaders } from "./Loaders";
@@ -44,34 +45,39 @@ const router = createBrowserRouter([
             action: ActionPipeline,
           },
           {
-            path: "logout/player", // login
+            path: "logout/player", // logout
             // element: <PlayerPlayScreen />,
             action: ActionPipeline,
           },
           {
-            path: "player/:callsign", // a players homepage
+            path: "player/:callsign", // a specific player
             loader: playerLoaders.loadPlayer,
             element: <PlayerProfileScreen />,
           },
 
           // nirv objects related
           {
-            path: "paths", // a players homepage
+            path: "paths", // list of paths
             loader: pathLoaders.loadPaths,
             element: <PathsScreen />,
           },
           {
-            path: "activities", // a players homepage
+            path: "paths/:pathName", // a specific path
+            loader: pathLoaders.loadPath,
+            element: <PathScreen />,
+          },
+          {
+            path: "activities", // list of activities
             // loader: playerLoaders.loadPlayer,
             element: <ActivitiesScreen />,
           },
           {
-            path: "actions", // a players homepage
+            path: "actions", // list of actions
             // loader: playerLoaders.loadPlayer,
             element: <ActionsScreen />,
           },
           {
-            path: "skills", // a players homepage
+            path: "skills", // list of skills
             // loader: playerLoaders.loadPlayer,
             element: <SkillsScreen />,
           },

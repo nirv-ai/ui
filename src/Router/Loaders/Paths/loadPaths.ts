@@ -1,7 +1,12 @@
 import type { LoaderFunction } from "react-router-dom";
 
-import { BFFEndpoint, PATHS_GET_ROUTE } from "Data";
-import { getPathStore, type PathDataInterface } from "Data";
+import {
+  BFFEndpoint,
+  PATHS_GET_ROUTE,
+  getPathStore,
+  PATHS_KEY,
+  type PathDataInterface,
+} from "Data";
 import { PathDoesntExistError } from "Errors";
 
 export type LoadPathsType =
@@ -10,7 +15,6 @@ export type LoadPathsType =
     }
   | Error;
 
-// TODO: this should make a request to the backend
 export const loadPaths: LoaderFunction = async ({
   request,
   params,
@@ -19,12 +23,11 @@ export const loadPaths: LoaderFunction = async ({
 
   try {
     const { data: response }: { data: { paths: PathDataInterface[] } } =
-      // TODO: need to implement pager via URLSearchParams
-      // ^ just like reddit does it
-      await BFFEndpoint.post(PATHS_GET_ROUTE, {});
+      // pager: { params: { name: 'after this one'}}
+      await BFFEndpoint.get(PATHS_GET_ROUTE);
 
-    // TODO: upsert or replace the array?
-    // pathStore(response.path.name, response.path);
+    // replace the array in localstorage, let webworker deal with cache
+    pathStore(PATHS_KEY, response.paths);
 
     return response;
   } catch (err) {
@@ -33,16 +36,12 @@ export const loadPaths: LoaderFunction = async ({
     };
 
     if (typeof thisError.response?.status !== "undefined") {
-      // user doesnt exist
+      // paths doesnt exist
       if (thisError.response.status === 404) {
         // TODO: delete player from localstorage before returning
         return PathDoesntExistError();
       } else console.error("\n\n unknown error in loadPath", err);
     }
-
-    // if no connection, try to retrieve paths from paths store
-    // const path = pathStore(params.name) as PathDataInterface | undefined;
-    // if (path) return { path };
 
     return PathDoesntExistError();
   }

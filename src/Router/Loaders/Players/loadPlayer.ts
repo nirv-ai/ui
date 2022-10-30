@@ -10,7 +10,6 @@ export type LoadPlayerType =
     }
   | Error;
 
-// TODO: this should make a request to the backend
 export const loadPlayer: LoaderFunction = async ({
   request,
   params,

@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "react-router-dom";
 
-import { BFFEndpoint, PATHS_GET_ROUTE } from "Data";
+import { BFFEndpoint, PATHS_GET_ROUTE, PATH_KEY } from "Data";
 import { getPathStore, type PathDataInterface } from "Data";
 import { PathDoesntExistError } from "Errors";
 
@@ -10,7 +10,6 @@ export type LoadPathType =
     }
   | Error;
 
-// TODO: this should make a request to the backend
 export const loadPath: LoaderFunction = async ({
   request,
   params,
@@ -19,14 +18,20 @@ export const loadPath: LoaderFunction = async ({
 
   try {
     const { data: response }: { data: { path: PathDataInterface } } =
-      await BFFEndpoint.post(PATHS_GET_ROUTE, {
-        name: params.name,
-      });
+      await BFFEndpoint.get(
+        `${PATHS_GET_ROUTE}/${params.pathName!.replace(/-/g, " ")}`
+      );
 
-    pathStore(response.path.name, response.path);
+    console.info("\n\n got path", response.path);
+
+    if (!response.path.name) return PathDoesntExistError();
+
+    pathStore(PATH_KEY, response.path);
 
     return response;
   } catch (err) {
+    pathStore(PATH_KEY, "");
+
     const thisError = err as {
       response?: Record<string, string | number>;
     };

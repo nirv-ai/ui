@@ -3,13 +3,12 @@
 import type { FC } from "react";
 
 import { Grid, H2, type GridInterface } from "Library";
-import { Paths } from "./Paths";
 
-export const PathsScreen: FC<GridInterface> = (props) => {
+export const PathScreen: FC<GridInterface> = (props) => {
   return (
     <Grid container component="main" {...props}>
-      <H2>PATHS</H2>
-      <Paths />
+      <H2>PATH</H2>
+      <div>I am a path</div>
     </Grid>
   );
 };

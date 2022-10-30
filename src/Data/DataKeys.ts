@@ -28,6 +28,16 @@ export const AUTHNZ_STORE_NAME = "AUTHNZ_STORE";
 export const PATH_STORE_NAME = "PATH_STORE";
 
 /**
- * leu tp access path in context
+ * key to access path in context
  */
 export const PATH_CONTEXT_NAME = "PATH_CONTEXT";
+
+/**
+ * key to access paths[]
+ */
+export const PATHS_KEY = "PATHS";
+
+/**
+ * key to access a specific path
+ */
+export const PATH_KEY = "THIS_PATH";
